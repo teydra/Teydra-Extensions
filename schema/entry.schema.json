@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/teydra/Teydra-Extensions/main/schema/entry.schema.json",
+  "title": "Teydra extension registry entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["manifest", "release"],
+  "properties": {
+    "manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "protocolVersion", "name", "description", "trust", "capabilities",
+        "version", "publisher", "hostApiVersion", "main", "categories", "repository",
+        "license", "permissions", "contributes"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,62}\\.[a-z0-9][a-z0-9-]{0,62}$" },
+        "protocolVersion": { "const": 1 },
+        "name": { "$ref": "#/$defs/label" },
+        "description": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "trust": { "const": "unverified" },
+        "capabilities": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 7,
+          "items": {
+            "enum": ["chat", "models", "access", "activity", "skills.read", "skills.write", "custom-actions"]
+          }
+        },
+        "version": { "$ref": "#/$defs/version" },
+        "publisher": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "name", "githubOwner", "verified"],
+          "properties": {
+            "id": { "$ref": "#/$defs/localId" },
+            "name": { "$ref": "#/$defs/label" },
+            "githubOwner": { "type": "string", "minLength": 1, "maxLength": 39 },
+            "verified": { "const": false }
+          }
+        },
+        "hostApiVersion": { "const": 1 },
+        "main": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+\\.(?:c?js|mjs)$",
+          "maxLength": 160
+        },
+        "categories": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 10,
+          "items": { "type": "string", "minLength": 1, "maxLength": 40 }
+        },
+        "repository": { "type": "string", "format": "uri", "pattern": "^https://github\\.com/" },
+        "homepage": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "license": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "permissions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["workspace", "networkHosts", "commands"],
+          "properties": {
+            "workspace": { "enum": ["none", "read", "write"] },
+            "networkHosts": {
+              "type": "array", "uniqueItems": true, "maxItems": 20,
+              "items": { "type": "string", "minLength": 1, "maxLength": 253 }
+            },
+            "commands": {
+              "type": "array", "uniqueItems": true, "maxItems": 20,
+              "items": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$" }
+            }
+          }
+        },
+        "contributes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["controls"],
+          "properties": {
+            "controls": {
+              "type": "array",
+              "maxItems": 30,
+              "items": { "$ref": "#/$defs/control" }
+            }
+          }
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "downloadUrl", "sha256", "sizeBytes"],
+      "properties": {
+        "version": { "$ref": "#/$defs/version" },
+        "downloadUrl": { "type": "string", "format": "uri", "pattern": "^https://github\\.com/" },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "sizeBytes": { "type": "integer", "minimum": 1, "maximum": 52428800 }
+      }
+    }
+  },
+  "$defs": {
+    "label": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "localId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$" },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label"],
+      "properties": {
+        "id": { "$ref": "#/$defs/localId" },
+        "label": { "$ref": "#/$defs/label" },
+        "description": { "type": "string", "minLength": 1, "maxLength": 240 }
+      }
+    },
+    "control": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "kind", "label", "placement"],
+          "properties": {
+            "id": { "$ref": "#/$defs/localId" },
+            "kind": { "const": "action" },
+            "label": { "$ref": "#/$defs/label" },
+            "description": { "type": "string", "minLength": 1, "maxLength": 240 },
+            "placement": { "const": "chat.composer" },
+            "icon": { "enum": ["desktop", "play", "settings", "sparkles"] }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "kind", "label", "placement", "options"],
+          "properties": {
+            "id": { "$ref": "#/$defs/localId" },
+            "kind": { "const": "choice" },
+            "label": { "$ref": "#/$defs/label" },
+            "description": { "type": "string", "minLength": 1, "maxLength": 240 },
+            "placement": { "const": "chat.composer" },
+            "icon": { "enum": ["desktop", "play", "settings", "sparkles"] },
+            "options": {
+              "type": "array", "minItems": 1, "maxItems": 50,
+              "items": { "$ref": "#/$defs/option" }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

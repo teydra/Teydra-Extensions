@@ -1,0 +1,5 @@
+.registry-audit/
+candidate-entries/
+candidate-registry.json
+candidate-changed.json
+node_modules/

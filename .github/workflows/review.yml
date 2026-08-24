@@ -1,0 +1,59 @@
+name: Extension review
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: extension-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  registry-review:
+    name: Registry integrity
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Vertrauenswürdigen Registry-Prüfer laden
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Node.js laden
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+
+      - name: Pull Request ausschließlich als Daten einlesen
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/materialize-pr.mjs
+
+      - name: Katalog deterministisch prüfen
+        run: >-
+          node scripts/build-registry.mjs
+          --entries candidate-entries
+          --output candidate-registry.json
+          --check
+
+      - name: Pakete ohne Ausführung prüfen und entpacken
+        run: >-
+          node scripts/audit-packages.mjs
+          --entries candidate-entries
+          --changed candidate-changed.json
+
+      - name: ClamAV mit frischen Signaturen installieren
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes clamav
+          sudo systemctl stop clamav-freshclam.service || true
+          sudo freshclam --stdout
+
+      - name: Entpackte Pakete auf bekannte Schadsoftware prüfen
+        run: clamscan --recursive --infected --no-summary .registry-audit/unpacked

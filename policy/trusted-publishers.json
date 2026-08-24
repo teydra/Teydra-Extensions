@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "publishers": [
+    {
+      "id": "teydra",
+      "name": "Teydra",
+      "githubOwners": ["teydra"],
+      "reason": "Offizieller Publisher der Teydra-App und ihrer gebündelten Adapter."
+    }
+  ]
+}

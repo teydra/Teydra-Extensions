@@ -1,0 +1,49 @@
+{
+  "manifest": {
+    "id": "example.todo-agent",
+    "protocolVersion": 1,
+    "name": "Todo Agent",
+    "description": "Verbindet einen Todo-Agenten mit deinen Chats.",
+    "trust": "unverified",
+    "capabilities": ["chat", "activity", "custom-actions"],
+    "version": "1.0.0",
+    "publisher": {
+      "id": "example",
+      "name": "Example Publisher",
+      "githubOwner": "example",
+      "verified": false
+    },
+    "hostApiVersion": 1,
+    "main": "dist/main.js",
+    "categories": ["Agents", "Productivity"],
+    "repository": "https://github.com/example/todo-agent",
+    "license": "MIT",
+    "permissions": {
+      "workspace": "none",
+      "networkHosts": ["api.example.com"],
+      "commands": []
+    },
+    "contributes": {
+      "controls": [
+        {
+          "id": "answer-style",
+          "kind": "choice",
+          "label": "Antwortstil",
+          "description": "Wie ausführlich der Agent antwortet.",
+          "placement": "chat.composer",
+          "icon": "settings",
+          "options": [
+            { "id": "short", "label": "Kurz" },
+            { "id": "detailed", "label": "Ausführlich" }
+          ]
+        }
+      ]
+    }
+  },
+  "release": {
+    "version": "1.0.0",
+    "downloadUrl": "https://github.com/example/todo-agent/releases/download/v1.0.0/todo-agent.zip",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "sizeBytes": 1024
+  }
+}

@@ -1,0 +1,43 @@
+name: Registry integrity
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  registry-integrity:
+    name: Registry integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Registry laden
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+
+      - name: Node.js laden
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+
+      - name: Katalog und Blockliste prüfen
+        run: npm run check
+
+      - name: Alle gelisteten Pakete erneut prüfen
+        run: npm run audit:packages
+
+      - name: ClamAV mit frischen Signaturen installieren
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes clamav
+          sudo systemctl stop clamav-freshclam.service || true
+          sudo freshclam --stdout
+
+      - name: Pakete auf bekannte Schadsoftware prüfen
+        run: clamscan --recursive --infected --no-summary .registry-audit/unpacked
