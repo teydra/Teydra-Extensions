@@ -2,6 +2,9 @@ import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { validatePublisherChange } from './publisher-ownership.mjs';
+import { parseEntry, readJson } from './registry-contract.mjs';
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const event = JSON.parse(await readFile(process.env.GITHUB_EVENT_PATH, 'utf8'));
 const token = process.env.GITHUB_TOKEN;
@@ -65,8 +68,23 @@ await cp(join(root, 'entries'), candidateEntries, { recursive: true });
 for (const file of entryFiles) {
   const relativePath = file.filename.slice('entries/'.length);
   const target = join(candidateEntries, ...relativePath.split('/'));
+  const candidate = parseEntry(JSON.parse((await content(file.filename)).toString('utf8')));
+  let baseEntry = null;
+  try {
+    baseEntry = parseEntry(await readJson(join(root, file.filename)));
+  } catch (error) {
+    if (error?.code !== 'ENOENT') throw error;
+  }
+  validatePublisherChange({
+    actor,
+    path: file.filename,
+    status: file.status,
+    previousPath: file.previous_filename,
+    baseEntry,
+    candidateEntry: candidate,
+  });
   await mkdir(dirname(target), { recursive: true });
-  await writeFile(target, await content(file.filename));
+  await writeFile(target, `${JSON.stringify(candidate, null, 2)}\n`, 'utf8');
 }
 if (registryFile) await writeFile(join(root, 'candidate-registry.json'), await content('registry.json'));
 else await cp(join(root, 'registry.json'), join(root, 'candidate-registry.json'));

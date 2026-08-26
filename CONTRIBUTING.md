@@ -3,6 +3,9 @@
 ## Voraussetzungen
 
 - Eigenes öffentliches GitHub-Repository für die Extension.
+- Der persönliche GitHub-Owner des Extension-Repositories entspricht dem Konto,
+  das den Pull Request öffnet. Organisations-Repositories werden in Version 1
+  noch nicht automatisch als Eigentum zugeordnet.
 - Ein unveränderliches ZIP als GitHub-Release-Asset.
 - Im ZIP liegen `extension.json` und der gebaute Code; Installationsskripte und
   native Binärdateien sind in Version 1 nicht erlaubt.
@@ -20,6 +23,12 @@
 Die stabile ID lautet `<publisher>.<name>`. `publisher.id` entspricht dem
 kleingeschriebenen GitHub-Owner des Extension-Repositories. Eine ID wird nach
 dem ersten Merge nicht umbenannt; Anzeigename und Beschreibung dürfen sich ändern.
+
+Ein Pull Request darf ausschließlich Einträge unter dem eigenen Ordner
+`entries/<github-owner>/` hinzufügen oder aktualisieren. Bei einem Update bleiben
+ID, GitHub-Owner, Quell-Repository und Installationsart unverändert; die neue
+SemVer-Version muss strikt höher sein. Löschen und Verschieben erfolgen nie über
+eine normale Publisher-Einreichung.
 
 ## Was die Prüfung ablehnt
 

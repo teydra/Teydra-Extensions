@@ -19,6 +19,11 @@ Hash- und Archiv-Prüfpfad wie spätere Community-Extensions.
 4. Ein Mensch prüft Zweck, angeforderte Rechte und Quell-Repository.
 5. Erst nach dem Merge wird der Eintrag Teil von `registry.json` und damit sichtbar.
 
+Die Pull-Request-Prüfung bindet jeden Eintrag an den GitHub-Autor: Ein Nutzer
+kann nur `entries/<eigener-github-name>/…` veröffentlichen und aktualisieren.
+Bestehende IDs, Herkunfts-Repositories und Installationsarten können dabei nicht
+übernommen oder umgebogen werden; Updates brauchen eine höhere Versionsnummer.
+
 Ein fehlgeschlagener oder noch nicht geprüfter Pull Request erscheint niemals im
 Katalog. Automatische Prüfungen können Schadsoftware nicht mathematisch
 ausschließen; deshalb werden fremder Code, Publisher-Vertrauen und Laufzeitrechte
