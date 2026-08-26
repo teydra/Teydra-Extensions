@@ -11,6 +11,7 @@ const GITHUB_OWNER = /^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$/;
 const COMMAND = /^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$/;
 const SEMVER = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-[0-9A-Za-z.-]+)?$/;
 const SHA256 = /^[a-f0-9]{64}$/;
+const ACCENT_COLOR = /^#[0-9a-fA-F]{6}$/;
 const HOSTNAME = /^(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/;
 const SAFE_MAIN = /^(?!\/)(?!.*(?:^|\/)\.\.(?:\/|$))[A-Za-z0-9._/-]+\.(?:c?js|mjs)$/;
 
@@ -147,7 +148,8 @@ export function parseManifest(raw) {
   exactKeys(
     raw,
     [
-      'id', 'protocolVersion', 'name', 'description', 'trust', 'capabilities', 'version',
+      'id', 'protocolVersion', 'name', 'shortName', 'description', 'accentColor', 'iconUrl',
+      'trust', 'capabilities', 'version',
       'publisher', 'hostApiVersion', 'main', 'categories', 'repository', 'homepage',
       'license', 'permissions', 'contributes',
     ],
@@ -212,7 +214,14 @@ export function parseManifest(raw) {
     id,
     protocolVersion: 1,
     name: text(raw.name, 80, 'manifest.name'),
+    ...(raw.shortName === undefined ? {} : { shortName: text(raw.shortName, 20, 'manifest.shortName') }),
     description: text(raw.description, 300, 'manifest.description'),
+    ...(raw.accentColor === undefined
+      ? {}
+      : ACCENT_COLOR.test(raw.accentColor)
+        ? { accentColor: raw.accentColor.toUpperCase() }
+        : (() => { throw new Error('manifest.accentColor ist ungültig.'); })()),
+    ...(raw.iconUrl === undefined ? {} : { iconUrl: httpsUrl(raw.iconUrl, 'manifest.iconUrl').toString() }),
     trust: 'unverified',
     capabilities,
     version,
@@ -238,11 +247,17 @@ export function parseEntry(raw) {
   exactKeys(raw, ['manifest', 'release'], 'Registry-Eintrag');
   const manifest = parseManifest(raw.manifest);
   if (!plainObject(raw.release)) throw new Error('release fehlt.');
-  exactKeys(raw.release, ['version', 'downloadUrl', 'sha256', 'sizeBytes'], 'release');
+  exactKeys(raw.release, ['version', 'installMode', 'downloadUrl', 'sha256', 'sizeBytes'], 'release');
   const version = text(raw.release.version, 64, 'release.version');
   const sha256 = text(raw.release.sha256, 64, 'release.sha256');
   const sizeBytes = raw.release.sizeBytes;
-  if (version !== manifest.version || !SHA256.test(sha256)) throw new Error('Release-Version oder SHA-256 passt nicht.');
+  if (
+    version !== manifest.version ||
+    !SHA256.test(sha256) ||
+    (raw.release.installMode !== 'bundled-adapter' && raw.release.installMode !== 'host-package')
+  ) {
+    throw new Error('Release-Version, Installationsart oder SHA-256 passt nicht.');
+  }
   if (!Number.isSafeInteger(sizeBytes) || sizeBytes <= 0 || sizeBytes > MAX_PACKAGE_BYTES) {
     throw new Error(`Paketgröße muss zwischen 1 und ${MAX_PACKAGE_BYTES} Bytes liegen.`);
   }
@@ -254,7 +269,13 @@ export function parseEntry(raw) {
   }
   return {
     manifest,
-    release: { version, downloadUrl: downloadUrl.toString(), sha256, sizeBytes },
+    release: {
+      version,
+      installMode: raw.release.installMode,
+      downloadUrl: downloadUrl.toString(),
+      sha256,
+      sizeBytes,
+    },
   };
 }
 

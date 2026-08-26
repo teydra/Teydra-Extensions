@@ -1,0 +1,37 @@
+{
+  "manifest": {
+    "id": "teydra.standard",
+    "protocolVersion": 1,
+    "name": "Standard",
+    "shortName": "Standard",
+    "description": "Spricht mit dir, liest Antworten vor und arbeitet im Hintergrund.",
+    "accentColor": "#4F8EF7",
+    "trust": "unverified",
+    "capabilities": ["chat", "activity", "skills.read", "skills.write"],
+    "version": "1.0.0",
+    "publisher": {
+      "id": "teydra",
+      "name": "Teydra",
+      "githubOwner": "teydra",
+      "verified": false
+    },
+    "hostApiVersion": 1,
+    "main": "dist/main.js",
+    "categories": ["Agents"],
+    "repository": "https://github.com/teydra/Teydra-Extensions",
+    "license": "PolyForm-Noncommercial-1.0.0",
+    "permissions": {
+      "workspace": "write",
+      "networkHosts": [],
+      "commands": ["claude", "codex"]
+    },
+    "contributes": { "controls": [] }
+  },
+  "release": {
+    "version": "1.0.0",
+    "installMode": "bundled-adapter",
+    "downloadUrl": "https://github.com/teydra/Teydra-Extensions/releases/download/bundled-v1/teydra.standard-1.0.0.zip",
+    "sha256": "e05d642e84fae769b99998bea4a5d1a34b9fa2ae57690c9769d0a1f88c933c76",
+    "sizeBytes": 1069
+  }
+}

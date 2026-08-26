@@ -4,6 +4,12 @@
 verbinden. Jeder kann eine Extension in einem eigenen GitHub-Repository bauen
 und sie hier per Pull Request einreichen.
 
+Die drei eigenen Extensions **Standard**, **Claude Code** und **Codex** stehen
+ebenfalls in diesem Katalog. Sie werden auf einem neuen Teydra-PC vorinstalliert,
+bleiben aber wie Katalog-Extensions deaktivierbar, deinstallierbar und erneut
+installierbar. Als verifizierte Teydra-Pakete durchlaufen sie denselben Download-,
+Hash- und Archiv-Prüfpfad wie spätere Community-Extensions.
+
 ## Wie eine Extension in die App kommt
 
 1. Die Extension wird als unveränderliches ZIP in einem GitHub Release veröffentlicht.

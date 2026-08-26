@@ -1,0 +1,37 @@
+{
+  "manifest": {
+    "id": "teydra.claude-code",
+    "protocolVersion": 1,
+    "name": "Claude Code",
+    "shortName": "Claude",
+    "description": "Verbindet diesen Chat direkt mit Claude Code auf deinem PC.",
+    "accentColor": "#D97757",
+    "trust": "unverified",
+    "capabilities": ["chat", "models", "access", "activity"],
+    "version": "1.0.0",
+    "publisher": {
+      "id": "teydra",
+      "name": "Teydra",
+      "githubOwner": "teydra",
+      "verified": false
+    },
+    "hostApiVersion": 1,
+    "main": "dist/main.js",
+    "categories": ["Agents", "Developer Tools"],
+    "repository": "https://github.com/teydra/Teydra-Extensions",
+    "license": "PolyForm-Noncommercial-1.0.0",
+    "permissions": {
+      "workspace": "write",
+      "networkHosts": [],
+      "commands": ["claude"]
+    },
+    "contributes": { "controls": [] }
+  },
+  "release": {
+    "version": "1.0.0",
+    "installMode": "bundled-adapter",
+    "downloadUrl": "https://github.com/teydra/Teydra-Extensions/releases/download/bundled-v1/teydra.claude-code-1.0.0.zip",
+    "sha256": "2048a75a1e423aae535a948e61f327334de5baa6d35cbe7ae1928810c9e8f93d",
+    "sizeBytes": 1075
+  }
+}

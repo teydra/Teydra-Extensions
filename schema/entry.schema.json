@@ -18,7 +18,10 @@
         "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,62}\\.[a-z0-9][a-z0-9-]{0,62}$" },
         "protocolVersion": { "const": 1 },
         "name": { "$ref": "#/$defs/label" },
+        "shortName": { "type": "string", "minLength": 1, "maxLength": 20 },
         "description": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "accentColor": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+        "iconUrl": { "type": "string", "format": "uri", "pattern": "^https://" },
         "trust": { "const": "unverified" },
         "capabilities": {
           "type": "array",
@@ -88,9 +91,10 @@
     "release": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["version", "downloadUrl", "sha256", "sizeBytes"],
+      "required": ["version", "installMode", "downloadUrl", "sha256", "sizeBytes"],
       "properties": {
         "version": { "$ref": "#/$defs/version" },
+        "installMode": { "enum": ["bundled-adapter", "host-package"] },
         "downloadUrl": { "type": "string", "format": "uri", "pattern": "^https://github\\.com/" },
         "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
         "sizeBytes": { "type": "integer", "minimum": 1, "maximum": 52428800 }

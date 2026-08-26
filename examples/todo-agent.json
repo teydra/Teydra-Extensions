@@ -42,6 +42,7 @@
   },
   "release": {
     "version": "1.0.0",
+    "installMode": "host-package",
     "downloadUrl": "https://github.com/example/todo-agent/releases/download/v1.0.0/todo-agent.zip",
     "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
     "sizeBytes": 1024
