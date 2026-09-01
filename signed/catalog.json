@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-01T11:11:04.211Z",
+  "entries": [
+    {
+      "id": "community.project-status",
+      "version": "1.0.0",
+      "packageFile": "community.project-status-1.0.0.json",
+      "sha256": "b821cb759214a400e6be3eea738e63ca0593e8ff89ef1733c29ccd96ffe3cfb5",
+      "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA5zGkLBOyM7RqfjU0SYBNtRccq0GN2xqFFnwLTAe5sLo=\n-----END PUBLIC KEY-----",
+      "manifest": {
+        "schemaVersion": 1,
+        "id": "community.project-status",
+        "version": "1.0.0",
+        "publisherName": "Beispiel-Entwickler",
+        "bootstrap": false,
+        "presentation": {
+          "name": "Projektstatus",
+          "shortName": "Status",
+          "description": "Eine kleine Beispiel-Extension, die den echten Community-Weg prüft.",
+          "accentColor": "#A78BFA",
+          "icon": "git-branch-outline"
+        },
+        "permissions": [
+          "projects.count"
+        ],
+        "surface": {
+          "body": "Zeigt, wie viele Projekte dein PC derzeit kennt. Die Extension erhält dabei weder Pfade noch Shellzugriff.",
+          "actions": [
+            {
+              "id": "count-projects",
+              "label": "Projektanzahl anzeigen",
+              "capability": "projects.count"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "teydra.claude-code",
+      "version": "1.0.0",
+      "packageFile": "teydra.claude-code-1.0.0.json",
+      "sha256": "198be408ac44ef16ab7adac9b6adb6408dcea9eb7f41275a888ef4b7bc2f18f6",
+      "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----",
+      "manifest": {
+        "schemaVersion": 1,
+        "id": "teydra.claude-code",
+        "version": "1.0.0",
+        "publisherName": "Teydra Lab",
+        "bootstrap": true,
+        "presentation": {
+          "name": "Claude Code",
+          "shortName": "Claude",
+          "description": "Verbindet diesen Chat direkt mit Claude Code auf deinem PC.",
+          "accentColor": "#D97757",
+          "icon": "sparkles-outline"
+        },
+        "permissions": [],
+        "chat": {
+          "engine": "claude",
+          "dependency": "claude_cli"
+        }
+      }
+    },
+    {
+      "id": "teydra.codex",
+      "version": "1.0.0",
+      "packageFile": "teydra.codex-1.0.0.json",
+      "sha256": "da5922628a89f09662b41eb5bb6fb6afb92144e37bf53fe1479d5b72eb19740a",
+      "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----",
+      "manifest": {
+        "schemaVersion": 1,
+        "id": "teydra.codex",
+        "version": "1.0.0",
+        "publisherName": "Teydra Lab",
+        "bootstrap": true,
+        "presentation": {
+          "name": "Codex",
+          "shortName": "Codex",
+          "description": "Verbindet diesen Chat direkt mit Codex auf deinem PC.",
+          "accentColor": "#10A37F",
+          "icon": "terminal-outline"
+        },
+        "permissions": [],
+        "chat": {
+          "engine": "codex",
+          "dependency": "codex_cli"
+        }
+      }
+    },
+    {
+      "id": "teydra.standard",
+      "version": "1.0.0",
+      "packageFile": "teydra.standard-1.0.0.json",
+      "sha256": "231ca783cffdcb13f43032549f8485cd1500d556bfad01abd2c4b89441f4bd7d",
+      "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----",
+      "manifest": {
+        "schemaVersion": 1,
+        "id": "teydra.standard",
+        "version": "1.0.0",
+        "publisherName": "Teydra Lab",
+        "bootstrap": true,
+        "presentation": {
+          "name": "Standard",
+          "shortName": "Standard",
+          "description": "Spricht mit dir, liest Antworten vor und arbeitet im Hintergrund.",
+          "accentColor": "#4F8EF7",
+          "icon": "chatbubbles-outline"
+        },
+        "permissions": [],
+        "chat": {
+          "engine": "standard"
+        }
+      }
+    }
+  ],
+  "signature": "lMwD5cBicDNTbxJJu6C31yz7Iq5G2aEQAmIzwdMahGXW/VHmtMfQEFhGX1wfkNKKPHTIZ3uVJTnCZUKMG/BfAA=="
+}

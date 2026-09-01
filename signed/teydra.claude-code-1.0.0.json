@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "manifest": {
+    "schemaVersion": 1,
+    "id": "teydra.claude-code",
+    "version": "1.0.0",
+    "publisherName": "Teydra Lab",
+    "bootstrap": true,
+    "presentation": {
+      "name": "Claude Code",
+      "shortName": "Claude",
+      "description": "Verbindet diesen Chat direkt mit Claude Code auf deinem PC.",
+      "accentColor": "#D97757",
+      "icon": "sparkles-outline"
+    },
+    "permissions": [],
+    "chat": {
+      "engine": "claude",
+      "dependency": "claude_cli"
+    }
+  },
+  "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----",
+  "signature": "Up4zb31tfgKUu/IzAFeex78WG/v+0lMggPBZlKkIU9UScn532Qes57IthDmqI1+Z2D71/+DIbpIQETt/izFXDA=="
+}
