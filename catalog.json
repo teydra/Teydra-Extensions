@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T16:26:13.890Z",
+  "generatedAt": "2026-09-05T20:46:30.710Z",
   "entries": [
     {
       "id": "community.project-status",
@@ -78,14 +78,14 @@
     },
     {
       "id": "teydra.codex",
-      "version": "2.1.0",
-      "packageFile": "teydra.codex-2.1.0.json",
-      "sha256": "7ed772b2769a8dd9cda1e6667dee2e380c1cd728f42f1d0f65295bda1114e680",
+      "version": "2.2.0",
+      "packageFile": "teydra.codex-2.2.0.json",
+      "sha256": "2d08970845c8782a91ce362428ab173b6a536ab0e751596103c86d4fc32daf3e",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----",
       "manifest": {
         "schemaVersion": 2,
         "id": "teydra.codex",
-        "version": "2.1.0",
+        "version": "2.2.0",
         "publisherName": "Teydra Lab",
         "bootstrap": true,
         "presentation": {
@@ -106,7 +106,6 @@
           "apiVersion": 1,
           "title": "Browser",
           "permissions": [
-            "clipboard.read",
             "clipboard.write"
           ],
           "actions": [
@@ -128,6 +127,11 @@
             {
               "id": "browser.pointer",
               "label": "Im Browser tippen",
+              "capability": "browser.control"
+            },
+            {
+              "id": "browser.move",
+              "label": "Mauszeiger bewegen",
               "capability": "browser.control"
             },
             {
@@ -193,5 +197,5 @@
       }
     }
   ],
-  "signature": "SE1l5eWnJEXc0SzwHl7u2YnFUUkn4diuw6NTAXZKAQpsptlNk3YAsLr1KERWE2jmTSFy239ovTr3KTLieFOJCw=="
+  "signature": "Iscqtn5kkPb5/A/JfdN28nHWgId+pKdBHaHM/TFNsLHewN+/u9rJIpXzNMt+y7qIiQRMhxxeSQFrJLzM3BxDDQ=="
 }
