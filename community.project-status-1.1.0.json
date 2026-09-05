@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 2,
+  "manifest": {
+    "schemaVersion": 2,
+    "id": "community.project-status",
+    "version": "1.1.0",
+    "publisherName": "Beispiel-Entwickler",
+    "bootstrap": false,
+    "presentation": {
+      "name": "Projektstatus",
+      "shortName": "Status",
+      "description": "Eine kleine Beispiel-Extension, die den echten Community-Weg prüft.",
+      "accentColor": "#A78BFA",
+      "icon": "git-branch-outline"
+    },
+    "permissions": [
+      "projects.count"
+    ],
+    "surface": {
+      "body": "Zeigt, wie viele Projekte dein PC derzeit kennt. Die Extension erhält dabei weder Pfade noch Shellzugriff.",
+      "actions": [
+        {
+          "id": "count-projects",
+          "label": "Projektanzahl anzeigen",
+          "capability": "projects.count"
+        }
+      ]
+    },
+    "companion": {
+      "apiVersion": 1,
+      "title": "Projektstatus",
+      "permissions": [
+        "clipboard.write"
+      ],
+      "actions": [
+        {
+          "id": "count-projects",
+          "label": "Projektanzahl laden",
+          "capability": "projects.count"
+        }
+      ]
+    }
+  },
+  "companionBundle": {
+    "script": "const root = document.getElementById('app');\n\nroot.innerHTML = `\n  <main class=\"card\">\n    <div class=\"eyebrow\">DIESER PC</div>\n    <div class=\"count\" id=\"count\">–</div>\n    <h1>Projekte</h1>\n    <p id=\"status\">Der aktuelle Stand wird geladen …</p>\n    <div class=\"actions\">\n      <button id=\"refresh\">Neu laden</button>\n      <button class=\"quiet\" id=\"copy\" disabled>Wert kopieren</button>\n    </div>\n  </main>\n`;\n\nlet latestCount = null;\n\nasync function refresh() {\n  const status = document.getElementById('status');\n  status.textContent = 'Der aktuelle Stand wird geladen …';\n  try {\n    const result = await teydra.invoke('count-projects');\n    latestCount = result.projectCount;\n    document.getElementById('count').textContent = String(latestCount);\n    document.getElementById('copy').disabled = false;\n    status.textContent = `Zuletzt geprüft: ${new Date(result.measuredAt).toLocaleTimeString()}`;\n    await teydra.state.save({ latestCount, measuredAt: result.measuredAt });\n  } catch (error) {\n    status.textContent = error instanceof Error ? error.message : 'Der PC hat nicht geantwortet.';\n  }\n}\n\ndocument.getElementById('refresh').addEventListener('click', refresh);\ndocument.getElementById('copy').addEventListener('click', async () => {\n  if (latestCount === null) return;\n  await teydra.clipboard.write(`${latestCount} Projekte`);\n});\n\nteydra.ready(async (context) => {\n  const saved = await teydra.state.load();\n  if (saved && Number.isInteger(saved.latestCount)) {\n    latestCount = saved.latestCount;\n    document.getElementById('count').textContent = String(latestCount);\n    document.getElementById('copy').disabled = false;\n    document.getElementById('status').textContent = 'Gespeicherter Stand – wird aktualisiert …';\n  }\n  await refresh();\n});\n",
+    "style": ":root {\n  color-scheme: dark;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;\n  background: #0b0b0d;\n  color: #f7f7f8;\n}\n\n* { box-sizing: border-box; }\nbody { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; }\n.card { width: min(100%, 420px); padding: 28px; border: 1px solid #2f2b3b; border-radius: 28px; background: #17151d; }\n.eyebrow { color: #a78bfa; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; }\n.count { margin-top: 22px; font-size: 76px; font-weight: 750; line-height: 0.9; }\nh1 { margin: 8px 0 0; font-size: 28px; }\np { min-height: 42px; margin: 18px 0 24px; color: #aaa5b5; line-height: 1.45; }\n.actions { display: grid; gap: 10px; }\nbutton { appearance: none; border: 0; border-radius: 16px; padding: 15px 18px; background: #a78bfa; color: #17121f; font: inherit; font-weight: 750; }\nbutton.quiet { background: #282431; color: #ece9f4; }\nbutton:disabled { opacity: 0.45; }\n"
+  },
+  "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA5zGkLBOyM7RqfjU0SYBNtRccq0GN2xqFFnwLTAe5sLo=\n-----END PUBLIC KEY-----",
+  "signature": "eG7z125tcHWcNT2KuD6kEtTsUKBsgdTwPmx3akXt4bP7piHUuIQia7wsdWKUJ3lLSYCAgB73AAMY3KTAyeP+Dg=="
+}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 2,
+  "manifest": {
+    "schemaVersion": 2,
+    "id": "teydra.codex",
+    "version": "2.1.0",
+    "publisherName": "Teydra Lab",
+    "bootstrap": true,
+    "presentation": {
+      "name": "Codex",
+      "shortName": "Codex",
+      "description": "Verknüpft Codex-Projekte, Threads, Modelle und Freigaben direkt mit diesem PC.",
+      "accentColor": "#10A37F",
+      "icon": "terminal-outline"
+    },
+    "permissions": [
+      "browser.control"
+    ],
+    "chat": {
+      "engine": "codex",
+      "dependency": "codex_cli"
+    },
+    "companion": {
+      "apiVersion": 1,
+      "title": "Browser",
+      "permissions": [
+        "clipboard.read",
+        "clipboard.write"
+      ],
+      "actions": [
+        {
+          "id": "browser.start",
+          "label": "PC-Browser starten",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.snapshot",
+          "label": "Browser-Bild laden",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.navigate",
+          "label": "Adresse öffnen",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.pointer",
+          "label": "Im Browser tippen",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.scroll",
+          "label": "Browser scrollen",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.type",
+          "label": "Text eingeben",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.key",
+          "label": "Taste senden",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.back",
+          "label": "Zurück",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.forward",
+          "label": "Vor",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.reload",
+          "label": "Neu laden",
+          "capability": "browser.control"
+        }
+      ]
+    }
+  },
+  "companionBundle": {
+    "script": "const root = document.getElementById('app');\n\nroot.innerHTML = `\n  <main class=\"browser-shell\">\n    <form class=\"address-row\" id=\"address-form\">\n      <button type=\"button\" class=\"icon\" id=\"back\" aria-label=\"Zurück\">‹</button>\n      <button type=\"button\" class=\"icon\" id=\"forward\" aria-label=\"Vor\">›</button>\n      <button type=\"button\" class=\"icon\" id=\"reload\" aria-label=\"Neu laden\">↻</button>\n      <input id=\"address\" inputmode=\"url\" autocomplete=\"off\" autocapitalize=\"none\" spellcheck=\"false\" placeholder=\"Adresse oder Suche\" />\n      <button class=\"go\" aria-label=\"Öffnen\">Los</button>\n    </form>\n    <section class=\"viewport\" id=\"viewport\">\n      <img id=\"screen\" alt=\"Ansicht des Browsers auf dem PC\" draggable=\"false\" />\n      <div class=\"empty\" id=\"empty\">\n        <div class=\"pulse\"></div>\n        <strong>Browser auf deinem PC</strong>\n        <span id=\"status\">wird verbunden …</span>\n      </div>\n    </section>\n    <footer class=\"tool-row\">\n      <button type=\"button\" id=\"keyboard\">⌨ <span>Tastatur</span></button>\n      <button type=\"button\" id=\"paste\">Einfügen</button>\n      <button type=\"button\" id=\"copy\">Auswahl kopieren</button>\n      <span class=\"live\" id=\"live\">PC</span>\n    </footer>\n    <textarea id=\"key-input\" aria-label=\"Text in den PC-Browser eingeben\" autocapitalize=\"sentences\" autocomplete=\"off\"></textarea>\n  </main>\n`;\n\nconst address = document.getElementById('address');\nconst screen = document.getElementById('screen');\nconst empty = document.getElementById('empty');\nconst status = document.getElementById('status');\nconst live = document.getElementById('live');\nconst keyInput = document.getElementById('key-input');\nlet latest = null;\nlet stopped = false;\nlet drag = null;\nlet typedTail = Promise.resolve();\nlet actionTail = Promise.resolve();\n\nfunction normalizedUrl(value) {\n  const clean = value.trim();\n  if (!clean) return null;\n  if (/^https?:\\/\\//i.test(clean)) return clean;\n  if (/^[a-z0-9.-]+\\.[a-z]{2,}(?:[/:?#]|$)/i.test(clean)) return `https://${clean}`;\n  return `https://www.google.com/search?q=${encodeURIComponent(clean)}`;\n}\n\nfunction applySnapshot(snapshot) {\n  if (!snapshot || typeof snapshot.image !== 'string') return;\n  latest = snapshot;\n  screen.src = `data:${snapshot.mimeType || 'image/jpeg'};base64,${snapshot.image}`;\n  screen.classList.add('ready');\n  empty.classList.add('hidden');\n  if (document.activeElement !== address && typeof snapshot.url === 'string' && snapshot.url !== 'about:blank') {\n    address.value = snapshot.url;\n  }\n  document.getElementById('back').disabled = !snapshot.canGoBack;\n  document.getElementById('forward').disabled = !snapshot.canGoForward;\n  live.textContent = 'PC · live';\n  live.classList.add('online');\n}\n\nasync function perform(actionId, input) {\n  if (stopped) return null;\n  live.textContent = 'PC · …';\n  try {\n    const snapshot = await teydra.query(actionId, input);\n    applySnapshot(snapshot);\n    return snapshot;\n  } catch (error) {\n    live.textContent = 'PC · getrennt';\n    live.classList.remove('online');\n    status.textContent = error instanceof Error ? error.message : 'Der PC antwortet nicht.';\n    empty.classList.remove('hidden');\n    return null;\n  }\n}\n\nfunction act(actionId, input) {\n  const result = actionTail.then(() => perform(actionId, input));\n  actionTail = result.then(() => undefined, () => undefined);\n  return result;\n}\n\nasync function poll() {\n  if (stopped) return;\n  await act(latest ? 'browser.snapshot' : 'browser.start');\n  setTimeout(poll, latest ? 850 : 1_500);\n}\n\ndocument.getElementById('address-form').addEventListener('submit', async (event) => {\n  event.preventDefault();\n  const url = normalizedUrl(address.value);\n  if (!url) return;\n  address.blur();\n  await act('browser.navigate', { url });\n});\n\nfor (const [id, actionId] of [\n  ['back', 'browser.back'],\n  ['forward', 'browser.forward'],\n  ['reload', 'browser.reload'],\n]) document.getElementById(id).addEventListener('click', () => act(actionId));\n\nscreen.addEventListener('pointerdown', (event) => {\n  screen.setPointerCapture(event.pointerId);\n  drag = { id: event.pointerId, x: event.clientX, y: event.clientY, moved: false };\n});\nscreen.addEventListener('pointermove', (event) => {\n  if (!drag || drag.id !== event.pointerId) return;\n  if (Math.abs(event.clientX - drag.x) + Math.abs(event.clientY - drag.y) > 12) drag.moved = true;\n});\nscreen.addEventListener('pointerup', async (event) => {\n  if (!drag || drag.id !== event.pointerId || !latest) return;\n  const start = drag;\n  drag = null;\n  const box = screen.getBoundingClientRect();\n  const x = Math.max(0, Math.min(latest.width, (event.clientX - box.left) / box.width * latest.width));\n  const y = Math.max(0, Math.min(latest.height, (event.clientY - box.top) / box.height * latest.height));\n  if (start.moved) {\n    await act('browser.scroll', {\n      x, y,\n      deltaX: (start.x - event.clientX) * 2,\n      deltaY: (start.y - event.clientY) * 2,\n    });\n  } else {\n    await act('browser.pointer', { x, y });\n  }\n});\n\ndocument.getElementById('keyboard').addEventListener('click', () => keyInput.focus());\ndocument.getElementById('paste').addEventListener('click', async () => {\n  try {\n    const text = await teydra.clipboard.read();\n    if (text) await act('browser.type', { text });\n  } catch (error) {\n    status.textContent = error instanceof Error ? error.message : 'Einfügen wurde nicht erlaubt.';\n  }\n});\ndocument.getElementById('copy').addEventListener('click', async () => {\n  try {\n    const snapshot = await act('browser.snapshot');\n    if (!snapshot?.selection) throw new Error('Im Browser ist kein Text ausgewählt.');\n    await teydra.clipboard.write(snapshot.selection);\n  } catch (error) {\n    status.textContent = error instanceof Error ? error.message : 'Kopieren wurde nicht erlaubt.';\n  }\n});\n\nkeyInput.addEventListener('input', () => {\n  const text = keyInput.value;\n  keyInput.value = '';\n  if (!text) return;\n  typedTail = typedTail.then(() => act('browser.type', { text }));\n});\nkeyInput.addEventListener('keydown', (event) => {\n  if (!['Enter', 'Backspace', 'Tab', 'Escape', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) return;\n  event.preventDefault();\n  typedTail = typedTail.then(() => act('browser.key', { key: event.key }));\n});\n\nwindow.addEventListener('beforeunload', () => { stopped = true; });\nteydra.ready(poll);\n",
+    "style": ":root {\n  color-scheme: dark;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;\n  background: #0b0d0d;\n  color: #f5f7f6;\n}\n\n* { box-sizing: border-box; }\nhtml, body, #app { width: 100%; height: 100%; margin: 0; overflow: hidden; }\nbutton, input, textarea { font: inherit; }\nbutton { color: inherit; }\n.browser-shell { height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; background: #0b0d0d; }\n.address-row { display: grid; grid-template-columns: 34px 34px 34px minmax(0, 1fr) auto; gap: 5px; padding: 8px; border-bottom: 1px solid #24302c; background: #101514; }\n.address-row button, .tool-row button { appearance: none; border: 1px solid #2b3935; border-radius: 11px; background: #19211f; min-height: 38px; }\n.address-row button:active, .tool-row button:active { background: #25312e; transform: scale(.97); }\n.address-row button:disabled { opacity: .3; }\n.address-row .icon { font-size: 24px; line-height: 1; }\n.address-row .go { padding: 0 11px; color: #9ee7cf; font-size: 12px; font-weight: 750; }\n#address { width: 100%; min-width: 0; border: 1px solid #2b3935; border-radius: 12px; outline: none; padding: 0 11px; background: #080b0a; color: #edf5f2; font-size: 13px; }\n#address:focus { border-color: #40b995; box-shadow: 0 0 0 2px #174638; }\n.viewport { position: relative; min-height: 0; display: grid; place-items: center; overflow: hidden; background: #171a19; touch-action: none; }\n#screen { display: none; width: 100%; height: 100%; object-fit: contain; object-position: top center; user-select: none; -webkit-user-select: none; }\n#screen.ready { display: block; }\n.empty { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 9px; padding: 30px; color: #e8efed; text-align: center; background: radial-gradient(circle at 50% 43%, #17241f, #0d1110 55%); }\n.empty.hidden { display: none; }\n.empty span { max-width: 280px; color: #8d9d98; font-size: 13px; line-height: 1.45; }\n.pulse { width: 38px; height: 38px; margin-bottom: 7px; border: 2px solid #2b6d59; border-top-color: #70dfbd; border-radius: 50%; animation: turn 1s linear infinite; }\n.tool-row { min-height: 52px; display: flex; align-items: center; gap: 6px; padding: 7px 9px calc(7px + env(safe-area-inset-bottom)); border-top: 1px solid #24302c; background: #101514; }\n.tool-row button { padding: 0 10px; color: #dbe6e2; font-size: 11px; font-weight: 650; }\n.live { margin-left: auto; color: #8d9d98; font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }\n.live.online { color: #70dfbd; }\n#key-input { position: fixed; left: 50%; bottom: 1px; width: 2px; height: 2px; opacity: .01; resize: none; }\n@keyframes turn { to { transform: rotate(360deg); } }\n\n@media (max-width: 360px) {\n  .tool-row button { padding: 0 7px; }\n  .tool-row button span { display: none; }\n}\n"
+  },
+  "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----",
+  "signature": "QGSy/mHGUDRxEkr6pqrm2oS0wO/GwTb21MjsOAchmDtpCxwKmYjub1OaXktkrsm0vN5qG/jAR/4e1RmtlvvSBA=="
+}
