@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 2,
+  "manifest": {
+    "schemaVersion": 2,
+    "id": "teydra.codex",
+    "version": "2.2.0",
+    "publisherName": "Teydra Lab",
+    "bootstrap": true,
+    "presentation": {
+      "name": "Codex",
+      "shortName": "Codex",
+      "description": "Verknüpft Codex-Projekte, Threads, Modelle und Freigaben direkt mit diesem PC.",
+      "accentColor": "#10A37F",
+      "icon": "terminal-outline"
+    },
+    "permissions": [
+      "browser.control"
+    ],
+    "chat": {
+      "engine": "codex",
+      "dependency": "codex_cli"
+    },
+    "companion": {
+      "apiVersion": 1,
+      "title": "Browser",
+      "permissions": [
+        "clipboard.write"
+      ],
+      "actions": [
+        {
+          "id": "browser.start",
+          "label": "PC-Browser starten",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.snapshot",
+          "label": "Browser-Bild laden",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.navigate",
+          "label": "Adresse öffnen",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.pointer",
+          "label": "Im Browser tippen",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.move",
+          "label": "Mauszeiger bewegen",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.scroll",
+          "label": "Browser scrollen",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.type",
+          "label": "Text eingeben",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.key",
+          "label": "Taste senden",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.back",
+          "label": "Zurück",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.forward",
+          "label": "Vor",
+          "capability": "browser.control"
+        },
+        {
+          "id": "browser.reload",
+          "label": "Neu laden",
+          "capability": "browser.control"
+        }
+      ]
+    }
+  },
+  "companionBundle": {
+    "script": "const root = document.getElementById('app');\n\nroot.innerHTML = `\n  <main class=\"browser-shell\">\n    <form class=\"address-row\" id=\"address-form\">\n      <button type=\"button\" class=\"icon\" id=\"back\" aria-label=\"Zurück\">‹</button>\n      <span class=\"connection\" id=\"connection\" title=\"PC wird verbunden\"></span>\n      <input id=\"address\" inputmode=\"url\" autocomplete=\"off\" autocapitalize=\"none\" spellcheck=\"false\" placeholder=\"Adresse oder Suche\" />\n      <button type=\"button\" class=\"icon menu-button\" id=\"menu-button\" aria-label=\"Browser-Menü\">•••</button>\n      <div class=\"menu hidden\" id=\"menu\">\n        <button type=\"button\" id=\"forward\">Vor</button>\n        <button type=\"button\" id=\"reload\">Neu laden</button>\n        <button type=\"button\" id=\"rotate\">Ansicht drehen</button>\n        <button type=\"button\" id=\"copy\">Auswahl kopieren</button>\n      </div>\n    </form>\n    <section class=\"viewport\" id=\"viewport\">\n      <canvas id=\"screen\" aria-label=\"Ansicht des Browsers auf dem PC\"></canvas>\n      <div class=\"remote-cursor\" id=\"remote-cursor\" aria-hidden=\"true\"></div>\n      <div class=\"empty\" id=\"empty\">\n        <div class=\"pulse\"></div>\n        <strong>Browser auf deinem PC</strong>\n        <span id=\"status\">wird verbunden …</span>\n      </div>\n      <div class=\"mode-switch\" role=\"group\" aria-label=\"Bedienungsart\">\n        <button type=\"button\" class=\"active\" id=\"direct-mode\">Direkt</button>\n        <button type=\"button\" id=\"mouse-mode\">Maus</button>\n      </div>\n    </section>\n    <textarea id=\"key-input\" aria-label=\"Text in den PC-Browser eingeben\" autocapitalize=\"sentences\" autocomplete=\"off\"></textarea>\n  </main>\n`;\n\nconst address = document.getElementById('address');\nconst canvas = document.getElementById('screen');\nconst context = canvas.getContext('2d', { alpha: false });\ncanvas.width = 0;\ncanvas.height = 0;\nconst viewport = document.getElementById('viewport');\nconst empty = document.getElementById('empty');\nconst status = document.getElementById('status');\nconst connection = document.getElementById('connection');\nconst keyInput = document.getElementById('key-input');\nconst menu = document.getElementById('menu');\nconst remoteCursor = document.getElementById('remote-cursor');\nif (!teydra.orientation?.toggle) document.getElementById('rotate').hidden = true;\nlet latest = null;\nlet revision = null;\nlet stopped = false;\nlet drag = null;\nlet mode = 'direct';\nlet localCursor = { x: 640, y: 360, actor: 'human' };\nlet typedTail = Promise.resolve();\nlet controlTail = Promise.resolve();\n\nfunction normalizedUrl(value) {\n  const clean = value.trim();\n  if (!clean) return null;\n  if (/^https?:\\/\\//i.test(clean)) return clean;\n  if (/^[a-z0-9.-]+\\.[a-z]{2,}(?:[/:?#]|$)/i.test(clean)) return `https://${clean}`;\n  return `https://www.google.com/search?q=${encodeURIComponent(clean)}`;\n}\n\nasync function applySnapshot(snapshot) {\n  if (!snapshot || typeof snapshot !== 'object') return false;\n  latest = snapshot;\n  if (snapshot.frame && !await applyFrame(snapshot.frame)) return false;\n  if (typeof snapshot.url === 'string' && document.activeElement !== address && snapshot.url !== 'about:blank') {\n    address.value = snapshot.url;\n  }\n  document.getElementById('back').disabled = !snapshot.canGoBack;\n  document.getElementById('forward').disabled = !snapshot.canGoForward;\n  if (snapshot.cursor) localCursor = snapshot.cursor;\n  placeCursor();\n  connection.classList.add('online');\n  connection.title = 'PC verbunden';\n  if (canvas.width > 0) empty.classList.add('hidden');\n  return true;\n}\n\nasync function applyFrame(frame) {\n  if (frame.protocol !== 1 || !Array.isArray(frame.steps)) return false;\n  if (!frame.reset && revision !== frame.baseRevision) {\n    revision = null;\n    return false;\n  }\n  if (frame.reset) {\n    canvas.width = frame.width;\n    canvas.height = frame.height;\n    context.fillStyle = '#ffffff';\n    context.fillRect(0, 0, canvas.width, canvas.height);\n  }\n  for (const step of frame.steps) {\n    if (step.type === 'move') applyMove(step);\n    if (step.type === 'paint') applyPaint(step);\n    if (step.type === 'image') await applyImage(step);\n  }\n  revision = frame.revision;\n  return true;\n}\n\nfunction applyMove(step) {\n  const copy = document.createElement('canvas');\n  copy.width = step.width;\n  copy.height = step.height;\n  copy.getContext('2d', { alpha: false }).drawImage(\n    canvas,\n    step.sourceX, step.sourceY, step.width, step.height,\n    0, 0, step.width, step.height,\n  );\n  context.drawImage(copy, step.targetX, step.targetY);\n}\n\nfunction applyPaint(step) {\n  if (!Array.isArray(step.boxes)) return;\n  for (const box of step.boxes) {\n    if (!Array.isArray(box) || box.length !== 5) continue;\n    const [x, y, width, height, color] = box;\n    context.fillStyle = `#${Number(color).toString(16).padStart(6, '0')}`;\n    context.fillRect(x, y, width, height);\n  }\n}\n\nfunction applyImage(step) {\n  return new Promise((resolve, reject) => {\n    const image = new Image();\n    image.onload = () => {\n      context.drawImage(image, step.x, step.y, step.width, step.height);\n      resolve();\n    };\n    image.onerror = () => reject(new Error('Ein Browser-Bildausschnitt war beschädigt.'));\n    image.src = `data:${step.mimeType};base64,${step.data}`;\n  });\n}\n\nfunction applyFailure(error) {\n  connection.classList.remove('online');\n  connection.title = 'PC getrennt';\n  status.textContent = error instanceof Error ? error.message : 'Der PC antwortet nicht.';\n  if (canvas.width === 0) empty.classList.remove('hidden');\n}\n\nfunction control(actionId, input = {}) {\n  const result = controlTail.then(async () => {\n    if (stopped) return null;\n    try {\n      const snapshot = await teydra.query(actionId, { ...input, frameRevision: revision });\n      await applySnapshot(snapshot);\n      return snapshot;\n    } catch (error) {\n      applyFailure(error);\n      return null;\n    }\n  });\n  controlTail = result.then(() => undefined, () => undefined);\n  return result;\n}\n\nasync function streamFrames() {\n  while (!stopped) {\n    try {\n      const action = revision === null ? 'browser.start' : 'browser.snapshot';\n      const snapshot = await teydra.query(action, { frameRevision: revision });\n      await applySnapshot(snapshot);\n    } catch (error) {\n      applyFailure(error);\n      await wait(1_000);\n    }\n  }\n}\n\ndocument.getElementById('address-form').addEventListener('submit', async (event) => {\n  event.preventDefault();\n  const url = normalizedUrl(address.value);\n  if (!url) return;\n  address.blur();\n  await control('browser.navigate', { url });\n});\n\ndocument.getElementById('back').addEventListener('click', () => control('browser.back'));\ndocument.getElementById('forward').addEventListener('click', () => closeMenu(control('browser.forward')));\ndocument.getElementById('reload').addEventListener('click', () => closeMenu(control('browser.reload')));\ndocument.getElementById('menu-button').addEventListener('click', () => menu.classList.toggle('hidden'));\ndocument.getElementById('rotate').addEventListener('click', async () => {\n  menu.classList.add('hidden');\n  try { await teydra.orientation?.toggle?.(); } catch (error) { applyFailure(error); }\n});\ndocument.getElementById('copy').addEventListener('click', async () => {\n  menu.classList.add('hidden');\n  try {\n    if (!latest?.selection) throw new Error('Im Browser ist kein Text ausgewählt.');\n    await teydra.clipboard.write(latest.selection);\n  } catch (error) {\n    status.textContent = error instanceof Error ? error.message : 'Kopieren wurde nicht erlaubt.';\n  }\n});\n\ndocument.getElementById('direct-mode').addEventListener('click', () => setMode('direct'));\ndocument.getElementById('mouse-mode').addEventListener('click', () => setMode('mouse'));\n\ncanvas.addEventListener('pointerdown', (event) => {\n  canvas.setPointerCapture(event.pointerId);\n  const point = remotePoint(event);\n  drag = { id: event.pointerId, clientX: event.clientX, clientY: event.clientY, point, moved: false };\n});\ncanvas.addEventListener('pointermove', (event) => {\n  if (!drag || drag.id !== event.pointerId) return;\n  const dx = event.clientX - drag.clientX;\n  const dy = event.clientY - drag.clientY;\n  if (Math.abs(dx) + Math.abs(dy) > 10) drag.moved = true;\n  if (mode === 'mouse') {\n    const box = canvas.getBoundingClientRect();\n    localCursor = {\n      x: clamp(drag.point.x + dx / box.width * canvas.width, 0, canvas.width),\n      y: clamp(drag.point.y + dy / box.height * canvas.height, 0, canvas.height),\n      actor: 'human',\n    };\n    placeCursor();\n  }\n});\ncanvas.addEventListener('pointerup', async (event) => {\n  if (!drag || drag.id !== event.pointerId || !latest) return;\n  const start = drag;\n  drag = null;\n  if (mode === 'mouse') {\n    if (start.moved) {\n      await control('browser.move', { x: localCursor.x, y: localCursor.y });\n      return;\n    }\n    const snapshot = await control('browser.pointer', { x: localCursor.x, y: localCursor.y });\n    if (snapshot?.acceptsText) keyInput.focus();\n    return;\n  }\n  const point = remotePoint(event);\n  if (start.moved) {\n    const box = canvas.getBoundingClientRect();\n    await control('browser.scroll', {\n      x: point.x,\n      y: point.y,\n      deltaX: (start.clientX - event.clientX) / box.width * canvas.width,\n      deltaY: (start.clientY - event.clientY) / box.height * canvas.height,\n    });\n  } else {\n    const snapshot = await control('browser.pointer', point);\n    if (snapshot?.acceptsText) keyInput.focus();\n  }\n});\n\nkeyInput.addEventListener('input', () => {\n  const text = keyInput.value;\n  keyInput.value = '';\n  if (!text) return;\n  typedTail = typedTail.then(() => control('browser.type', { text }));\n});\nkeyInput.addEventListener('keydown', (event) => {\n  if (!['Enter', 'Backspace', 'Tab', 'Escape', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) return;\n  event.preventDefault();\n  typedTail = typedTail.then(() => control('browser.key', { key: event.key }));\n});\n\nfunction setMode(next) {\n  mode = next;\n  document.getElementById('direct-mode').classList.toggle('active', next === 'direct');\n  document.getElementById('mouse-mode').classList.toggle('active', next === 'mouse');\n  remoteCursor.classList.toggle('visible', next === 'mouse' || localCursor.actor === 'ai');\n  placeCursor();\n}\n\nfunction placeCursor() {\n  if (!canvas.width) return;\n  const canvasBox = canvas.getBoundingClientRect();\n  const viewportBox = viewport.getBoundingClientRect();\n  const left = canvasBox.left - viewportBox.left + localCursor.x / canvas.width * canvasBox.width;\n  const top = canvasBox.top - viewportBox.top + localCursor.y / canvas.height * canvasBox.height;\n  remoteCursor.style.transform = `translate(${left}px, ${top}px)`;\n  remoteCursor.classList.toggle('ai', localCursor.actor === 'ai');\n  remoteCursor.classList.toggle('visible', mode === 'mouse' || localCursor.actor === 'ai');\n}\n\nfunction remotePoint(event) {\n  const box = canvas.getBoundingClientRect();\n  return {\n    x: clamp((event.clientX - box.left) / box.width * canvas.width, 0, canvas.width),\n    y: clamp((event.clientY - box.top) / box.height * canvas.height, 0, canvas.height),\n  };\n}\n\nfunction closeMenu(promise) {\n  menu.classList.add('hidden');\n  return promise;\n}\n\nfunction clamp(value, minimum, maximum) {\n  return Math.max(minimum, Math.min(maximum, value));\n}\n\nfunction wait(milliseconds) {\n  return new Promise((resolve) => setTimeout(resolve, milliseconds));\n}\n\nwindow.addEventListener('resize', placeCursor);\nwindow.addEventListener('beforeunload', () => { stopped = true; });\nteydra.ready(streamFrames);\n",
+    "style": ":root {\n  color-scheme: dark;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif;\n  background: #090b0b;\n  color: #f5f7f6;\n}\n\n* { box-sizing: border-box; }\n[hidden] { display: none !important; }\nhtml, body, #app { width: 100%; height: 100%; margin: 0; overflow: hidden; }\nbutton, input, textarea { font: inherit; }\nbutton { color: inherit; }\n.browser-shell { height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr); background: #090b0b; }\n.address-row {\n  position: relative; z-index: 4; display: grid; grid-template-columns: 34px 8px minmax(0, 1fr) 38px;\n  align-items: center; gap: 7px; padding: 7px 8px; border-bottom: 1px solid #202a27; background: #101413;\n}\n.address-row button { appearance: none; border: 0; border-radius: 10px; background: transparent; min-height: 36px; }\n.address-row button:active { background: #26312e; transform: scale(.97); }\n.address-row button:disabled { opacity: .26; }\n.address-row .icon { font-size: 24px; line-height: 1; }\n.menu-button { font-size: 15px !important; font-weight: 800; letter-spacing: 1px; }\n.connection { width: 7px; height: 7px; border-radius: 50%; background: #6c7471; box-shadow: 0 0 0 2px #1d2321; }\n.connection.online { background: #5bd5ad; box-shadow: 0 0 0 2px #143d30; }\n#address {\n  width: 100%; min-width: 0; min-height: 36px; border: 1px solid #293632; border-radius: 11px;\n  outline: none; padding: 0 11px; background: #080a09; color: #edf5f2; font-size: 13px;\n}\n#address:focus { border-color: #40b995; box-shadow: 0 0 0 2px #174638; }\n.menu {\n  position: absolute; top: 50px; right: 8px; width: 178px; display: grid; padding: 6px;\n  border: 1px solid #33423d; border-radius: 13px; background: #171d1b; box-shadow: 0 12px 34px #0009;\n}\n.menu.hidden { display: none; }\n.menu button { min-height: 39px; padding: 0 11px; text-align: left; font-size: 13px; }\n.viewport {\n  position: relative; min-height: 0; display: grid; place-items: center; overflow: hidden;\n  background: #151817; touch-action: none;\n}\n#screen {\n  display: block; width: 100%; height: auto; max-height: 100%; aspect-ratio: 16 / 9;\n  object-fit: contain; background: #fff; user-select: none; -webkit-user-select: none;\n}\n.empty {\n  position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 9px;\n  padding: 30px; color: #e8efed; text-align: center; background: radial-gradient(circle at 50% 43%, #17241f, #0d1110 55%);\n}\n.empty.hidden { display: none; }\n.empty span { max-width: 280px; color: #8d9d98; font-size: 13px; line-height: 1.45; }\n.pulse { width: 38px; height: 38px; margin-bottom: 7px; border: 2px solid #2b6d59; border-top-color: #70dfbd; border-radius: 50%; animation: turn 1s linear infinite; }\n.mode-switch {\n  position: absolute; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom)); display: flex;\n  padding: 3px; border: 1px solid #ffffff1f; border-radius: 12px; background: #0d1210dd; backdrop-filter: blur(12px);\n}\n.mode-switch button { appearance: none; min-height: 30px; padding: 0 10px; border: 0; border-radius: 9px; background: transparent; color: #a5b0ac; font-size: 11px; font-weight: 750; }\n.mode-switch button.active { background: #2a3733; color: #f3f8f6; }\n.remote-cursor {\n  position: absolute; left: 0; top: 0; z-index: 3; width: 15px; height: 21px; opacity: 0; pointer-events: none;\n  transform-origin: 0 0; transition: opacity .12s;\n}\n.remote-cursor::before {\n  content: ''; position: absolute; inset: 0; clip-path: polygon(0 0, 0 80%, 26% 60%, 44% 100%, 61% 91%, 42% 54%, 78% 54%);\n  background: #f7fbfa; filter: drop-shadow(0 1px 1px #000) drop-shadow(0 0 1px #000);\n}\n.remote-cursor.ai::after { content: 'KI'; position: absolute; left: 12px; top: 12px; padding: 2px 4px; border-radius: 5px; background: #10a37f; color: white; font-size: 8px; font-weight: 900; }\n.remote-cursor.visible { opacity: 1; }\n#key-input { position: fixed; left: 50%; bottom: 1px; width: 2px; height: 2px; opacity: .01; resize: none; }\n@keyframes turn { to { transform: rotate(360deg); } }\n\n@media (orientation: landscape) {\n  .address-row { padding-top: max(5px, env(safe-area-inset-top)); padding-left: max(8px, env(safe-area-inset-left)); padding-right: max(8px, env(safe-area-inset-right)); }\n  .mode-switch { right: max(10px, env(safe-area-inset-right)); }\n}\n"
+  },
+  "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----",
+  "signature": "jM2ukVClMVRamdxTuAqWujDD5FOFGJuLKvAnjppilpHKFlXQQBpGpYmD5LgGeLS68t+/GlyweVDKKTvgvHCgDw=="
+}
