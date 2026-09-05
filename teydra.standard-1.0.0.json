@@ -15,9 +15,12 @@
     },
     "permissions": [],
     "chat": {
-      "engine": "standard"
+      "engine": "standard",
+      "services": [
+        "conversation"
+      ]
     }
   },
   "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----",
-  "signature": "LaZOP2qBSLsxdSkhuXaDg1W4q62I0hDa11f6Zpvc7t9IWszBFrk6/WEcFNMRfJtVQSyAtMAnLHlW5KuEN/SECg=="
+  "signature": "eeXJu9c8mxc1dGXrLJsaJkkB1lXZSM7crmkuUoIVkIKAQonvK+2ipvAdoV83KsVCSbfcE6kfyOqbtXD+FEumCw=="
 }

@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-01T14:01:16.907Z",
+  "generatedAt": "2026-09-05T16:26:13.890Z",
   "entries": [
     {
       "id": "community.project-status",
-      "version": "1.0.0",
-      "packageFile": "community.project-status-1.0.0.json",
-      "sha256": "b821cb759214a400e6be3eea738e63ca0593e8ff89ef1733c29ccd96ffe3cfb5",
+      "version": "1.1.0",
+      "packageFile": "community.project-status-1.1.0.json",
+      "sha256": "a4f0e3623861ef3e610049f5eab5c3a36c378bac0cec1d644c3ed63035fbae9d",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA5zGkLBOyM7RqfjU0SYBNtRccq0GN2xqFFnwLTAe5sLo=\n-----END PUBLIC KEY-----",
       "manifest": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "community.project-status",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "publisherName": "Beispiel-Entwickler",
         "bootstrap": false,
         "presentation": {
@@ -30,6 +30,20 @@
             {
               "id": "count-projects",
               "label": "Projektanzahl anzeigen",
+              "capability": "projects.count"
+            }
+          ]
+        },
+        "companion": {
+          "apiVersion": 1,
+          "title": "Projektstatus",
+          "permissions": [
+            "clipboard.write"
+          ],
+          "actions": [
+            {
+              "id": "count-projects",
+              "label": "Projektanzahl laden",
               "capability": "projects.count"
             }
           ]
@@ -64,27 +78,89 @@
     },
     {
       "id": "teydra.codex",
-      "version": "1.0.0",
-      "packageFile": "teydra.codex-1.0.0.json",
-      "sha256": "da5922628a89f09662b41eb5bb6fb6afb92144e37bf53fe1479d5b72eb19740a",
+      "version": "2.1.0",
+      "packageFile": "teydra.codex-2.1.0.json",
+      "sha256": "7ed772b2769a8dd9cda1e6667dee2e380c1cd728f42f1d0f65295bda1114e680",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----",
       "manifest": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "teydra.codex",
-        "version": "1.0.0",
+        "version": "2.1.0",
         "publisherName": "Teydra Lab",
         "bootstrap": true,
         "presentation": {
           "name": "Codex",
           "shortName": "Codex",
-          "description": "Verbindet diesen Chat direkt mit Codex auf deinem PC.",
+          "description": "Verknüpft Codex-Projekte, Threads, Modelle und Freigaben direkt mit diesem PC.",
           "accentColor": "#10A37F",
           "icon": "terminal-outline"
         },
-        "permissions": [],
+        "permissions": [
+          "browser.control"
+        ],
         "chat": {
           "engine": "codex",
           "dependency": "codex_cli"
+        },
+        "companion": {
+          "apiVersion": 1,
+          "title": "Browser",
+          "permissions": [
+            "clipboard.read",
+            "clipboard.write"
+          ],
+          "actions": [
+            {
+              "id": "browser.start",
+              "label": "PC-Browser starten",
+              "capability": "browser.control"
+            },
+            {
+              "id": "browser.snapshot",
+              "label": "Browser-Bild laden",
+              "capability": "browser.control"
+            },
+            {
+              "id": "browser.navigate",
+              "label": "Adresse öffnen",
+              "capability": "browser.control"
+            },
+            {
+              "id": "browser.pointer",
+              "label": "Im Browser tippen",
+              "capability": "browser.control"
+            },
+            {
+              "id": "browser.scroll",
+              "label": "Browser scrollen",
+              "capability": "browser.control"
+            },
+            {
+              "id": "browser.type",
+              "label": "Text eingeben",
+              "capability": "browser.control"
+            },
+            {
+              "id": "browser.key",
+              "label": "Taste senden",
+              "capability": "browser.control"
+            },
+            {
+              "id": "browser.back",
+              "label": "Zurück",
+              "capability": "browser.control"
+            },
+            {
+              "id": "browser.forward",
+              "label": "Vor",
+              "capability": "browser.control"
+            },
+            {
+              "id": "browser.reload",
+              "label": "Neu laden",
+              "capability": "browser.control"
+            }
+          ]
         }
       }
     },
@@ -92,7 +168,7 @@
       "id": "teydra.standard",
       "version": "1.0.0",
       "packageFile": "teydra.standard-1.0.0.json",
-      "sha256": "231ca783cffdcb13f43032549f8485cd1500d556bfad01abd2c4b89441f4bd7d",
+      "sha256": "cc616e23fd27bf2e59665f2178ccb67c3ef98b26d04ca7463b4e08849d8825b1",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----",
       "manifest": {
         "schemaVersion": 1,
@@ -109,10 +185,13 @@
         },
         "permissions": [],
         "chat": {
-          "engine": "standard"
+          "engine": "standard",
+          "services": [
+            "conversation"
+          ]
         }
       }
     }
   ],
-  "signature": "iw4Hd3GadpgodWOwyrEIxrmJ3ULp2/p1wkoJxoBo5ihznReLAJjGUKp8TOVnRPOwOpoFlB4vo+08DgiDMqSqCw=="
+  "signature": "SE1l5eWnJEXc0SzwHl7u2YnFUUkn4diuw6NTAXZKAQpsptlNk3YAsLr1KERWE2jmTSFy239ovTr3KTLieFOJCw=="
 }
