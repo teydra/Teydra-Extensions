@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T20:52:58.705Z",
+  "generatedAt": "2026-09-06T13:01:55.435Z",
   "entries": [
     {
       "id": "community.project-status",
@@ -78,14 +78,14 @@
     },
     {
       "id": "teydra.codex",
-      "version": "2.2.1",
-      "packageFile": "teydra.codex-2.2.1.json",
-      "sha256": "54d21b0099407ee0fc137f25392deec82002d5239f58ad91ef151624f400f473",
+      "version": "2.4.0",
+      "packageFile": "teydra.codex-2.4.0.json",
+      "sha256": "b15dfa8876524666846d7ab8266d1bdb0ee3263fd282e7fc11867b9411e7b135",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----",
       "manifest": {
         "schemaVersion": 2,
         "id": "teydra.codex",
-        "version": "2.2.1",
+        "version": "2.4.0",
         "publisherName": "Teydra Lab",
         "bootstrap": true,
         "presentation": {
@@ -126,12 +126,22 @@
             },
             {
               "id": "browser.pointer",
-              "label": "Im Browser tippen",
+              "label": "Im Browser klicken",
               "capability": "browser.control"
             },
             {
               "id": "browser.move",
               "label": "Mauszeiger bewegen",
+              "capability": "browser.control"
+            },
+            {
+              "id": "browser.drag",
+              "label": "Im Browser ziehen",
+              "capability": "browser.control"
+            },
+            {
+              "id": "browser.copy",
+              "label": "Auswahl auf dem PC kopieren",
               "capability": "browser.control"
             },
             {
@@ -197,5 +207,5 @@
       }
     }
   ],
-  "signature": "5qyiv5EQhKaBm687Fmsps/v6FuxLbrpf97l5wJmXOzJLr0fSSKFn9ZBioxdD0KYv8tgV3xfTmkRoVho5ekAEDw=="
+  "signature": "KTigZfzPmfjKZKCN3au5paPWGqBngiObvsWenIO/79sKqxBIeo9IDGH/wQFVh2UvUGSs/1luQ9z96Cg3s0ZUBw=="
 }
