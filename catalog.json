@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-06T13:01:55.435Z",
+  "generatedAt": "2026-09-06T13:07:34.995Z",
   "entries": [
     {
       "id": "community.project-status",
@@ -78,14 +78,14 @@
     },
     {
       "id": "teydra.codex",
-      "version": "2.4.0",
-      "packageFile": "teydra.codex-2.4.0.json",
-      "sha256": "b15dfa8876524666846d7ab8266d1bdb0ee3263fd282e7fc11867b9411e7b135",
+      "version": "2.4.1",
+      "packageFile": "teydra.codex-2.4.1.json",
+      "sha256": "5b00220863c72c6b8923af1e0d139556ac972a4f88f5ab484cd9a96ebdcc1e6a",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----",
       "manifest": {
         "schemaVersion": 2,
         "id": "teydra.codex",
-        "version": "2.4.0",
+        "version": "2.4.1",
         "publisherName": "Teydra Lab",
         "bootstrap": true,
         "presentation": {
@@ -207,5 +207,5 @@
       }
     }
   ],
-  "signature": "KTigZfzPmfjKZKCN3au5paPWGqBngiObvsWenIO/79sKqxBIeo9IDGH/wQFVh2UvUGSs/1luQ9z96Cg3s0ZUBw=="
+  "signature": "abM4tHzjbaFwHiV7rpMjKcpwjp9ojGRI0WYG7Wf65euOnnLZoBF/p0vnU0wVTk4LobJ2Sc36GfWl+asizQAjDg=="
 }
