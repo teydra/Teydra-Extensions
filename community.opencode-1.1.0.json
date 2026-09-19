@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 2,
+  "manifest": {
+    "schemaVersion": 2,
+    "id": "community.opencode",
+    "version": "1.1.0",
+    "publisherName": "OpenCode Community",
+    "bootstrap": false,
+    "presentation": {
+      "name": "OpenCode",
+      "shortName": "OpenCode",
+      "description": "Arbeitet mit dem quelloffenen OpenCode auf deinem PC. Fremder Herausgeber, von Teydra in den Katalog aufgenommen.",
+      "accentColor": "#FAB283",
+      "icon": "terminal-outline"
+    },
+    "permissions": [],
+    "chat": {
+      "engine": "community.opencode",
+      "engineSpec": {
+        "label": "OpenCode",
+        "ceiling": "read",
+        "ceilingReason": "OpenCode ist ein fremdes Werkzeug: Was es intern tut, sieht die Prüfkette dieses PCs nicht. Deshalb gilt die niedrigste Stufe.",
+        "dependency": {
+          "command": "opencode",
+          "versionArgs": [
+            "--version"
+          ],
+          "installHint": "Einmalig im Terminal: npm install -g opencode-ai"
+        },
+        "run": {
+          "protocol": "oneshot",
+          "input": "stdin",
+          "args": [
+            "run",
+            "--model={model}"
+          ],
+          "continueArgs": [
+            "run",
+            "--continue",
+            "--model={model}"
+          ]
+        }
+      },
+      "models": [
+        {
+          "id": "opencode/nemotron-3.5-lightning-free",
+          "label": "Nemotron 3.5 Lightning",
+          "description": "Schnell und kostenlos — die Vorgabe, wenn du nichts einstellst.",
+          "efforts": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "defaultEffort": "medium"
+        },
+        {
+          "id": "opencode/nemotron-3-ultra-free",
+          "label": "Nemotron 3 Ultra",
+          "description": "Stärker, ebenfalls kostenlos. Braucht länger.",
+          "efforts": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "defaultEffort": "high"
+        },
+        {
+          "id": "opencode/mimo-v2.5-free",
+          "label": "MiMo 2.5",
+          "description": "Kostenloses Allzweckmodell.",
+          "efforts": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "defaultEffort": "medium"
+        },
+        {
+          "id": "opencode/big-pickle",
+          "label": "Big Pickle",
+          "description": "Größeres Modell des OpenCode-Anbieters.",
+          "efforts": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "defaultEffort": "medium"
+        },
+        {
+          "id": "opencode/union-alpha",
+          "label": "Union Alpha",
+          "description": "Experimentelles Modell des OpenCode-Anbieters.",
+          "efforts": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "defaultEffort": "medium"
+        }
+      ]
+    },
+    "settings": {
+      "title": "OpenCode",
+      "fields": [
+        {
+          "id": "anthropic.key",
+          "kind": "secret",
+          "label": "Anthropic API-Schlüssel",
+          "hint": "Optional. Damit stehen Claude-Modelle zur Verfügung. Bleibt auf dem PC.",
+          "env": "ANTHROPIC_API_KEY"
+        },
+        {
+          "id": "openai.key",
+          "kind": "secret",
+          "label": "OpenAI API-Schlüssel",
+          "hint": "Optional. Damit stehen GPT-Modelle zur Verfügung. Bleibt auf dem PC.",
+          "env": "OPENAI_API_KEY"
+        },
+        {
+          "id": "openrouter.key",
+          "kind": "secret",
+          "label": "OpenRouter API-Schlüssel",
+          "hint": "Optional. Öffnet die Modellauswahl von OpenRouter.",
+          "env": "OPENROUTER_API_KEY"
+        },
+        {
+          "id": "agent",
+          "kind": "choice",
+          "label": "Arbeitsweise",
+          "hint": "Womit OpenCode antwortet, wenn du nichts anderes sagst.",
+          "options": [
+            {
+              "value": "build",
+              "label": "Bauen"
+            },
+            {
+              "value": "plan",
+              "label": "Planen"
+            },
+            {
+              "value": "general",
+              "label": "Allgemein"
+            }
+          ],
+          "env": "OPENCODE_AGENT"
+        },
+        {
+          "id": "thinking",
+          "kind": "toggle",
+          "label": "Denkschritte zeigen",
+          "hint": "Zeigt, woran OpenCode gerade arbeitet — mehr Text im Chat.",
+          "env": "OPENCODE_THINKING"
+        }
+      ]
+    }
+  },
+  "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAMVLWUOFuaMHZ6CiuHR1d7j7ISwCxVxVJRY02NoFHFf8=\n-----END PUBLIC KEY-----",
+  "signature": "BcL4mh4LWz5wcJ+hWHqg6ykU7ye1GXCB/a67sViUDFq54Y2fS4j9tqdndSHFyPW3ImLuhEOXN1XhVrCB1VTqCw=="
+}
