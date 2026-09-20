@@ -3,7 +3,7 @@
   "manifest": {
     "schemaVersion": 2,
     "id": "community.opencode",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "publisherName": "OpenCode Community",
     "bootstrap": false,
     "presentation": {
@@ -38,6 +38,15 @@
             "run",
             "--continue",
             "--model={model}"
+          ]
+        },
+        "projects": {
+          "protocol": "json-v1",
+          "args": [
+            "db",
+            "select worktree as path, coalesce(name, '') as name from project where id != 'global' order by time_updated desc",
+            "--format",
+            "json"
           ]
         }
       },
@@ -155,5 +164,5 @@
     }
   },
   "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAMVLWUOFuaMHZ6CiuHR1d7j7ISwCxVxVJRY02NoFHFf8=\n-----END PUBLIC KEY-----",
-  "signature": "BcL4mh4LWz5wcJ+hWHqg6ykU7ye1GXCB/a67sViUDFq54Y2fS4j9tqdndSHFyPW3ImLuhEOXN1XhVrCB1VTqCw=="
+  "signature": "H2k3FahtWmkhG253C4Dxi6DzoRG7KcwSYIXN54GdSDHPK/OTrjOxtopQruaX9VERmUXF5KroMjUYG3p7yyxtDA=="
 }

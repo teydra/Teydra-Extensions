@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-19T14:13:09.611Z",
+  "generatedAt": "2026-09-20T15:47:53.317Z",
   "entries": [
     {
       "id": "community.opencode",
-      "version": "1.1.0",
-      "packageFile": "community.opencode-1.1.0.json",
-      "sha256": "4bfd9069e808035b9a5aaea319a21a4b221c2243df088229ef1f2236fb617684",
+      "version": "1.2.0",
+      "packageFile": "community.opencode-1.2.0.json",
+      "sha256": "75e83da9d22b410cab1d298707e35389e85c9fabe498a82912171e89f22e2060",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAMVLWUOFuaMHZ6CiuHR1d7j7ISwCxVxVJRY02NoFHFf8=\n-----END PUBLIC KEY-----",
       "manifest": {
         "schemaVersion": 2,
         "id": "community.opencode",
-        "version": "1.1.0",
+        "version": "1.2.0",
         "publisherName": "OpenCode Community",
         "bootstrap": false,
         "presentation": {
@@ -46,6 +46,15 @@
                 "run",
                 "--continue",
                 "--model={model}"
+              ]
+            },
+            "projects": {
+              "protocol": "json-v1",
+              "args": [
+                "db",
+                "select worktree as path, coalesce(name, '') as name from project where id != 'global' order by time_updated desc",
+                "--format",
+                "json"
               ]
             }
           },
@@ -368,5 +377,5 @@
       }
     }
   ],
-  "signature": "dm4C0+PSRbQjgvzkmLOs6p8HC6ZlpqHZF4St7klRR6Q0mvyk6Aabye9mRuMOCsfmCODzcSNpK3mZt5jaUYOxBQ=="
+  "signature": "eZFZ9SxzHXO5379lFmtR5QviMj70Lhqqoud7+wVpmz7HtzykdiP0jVAG48vkw0PV9aohL09j8kLqtYhy6DI5Bw=="
 }
