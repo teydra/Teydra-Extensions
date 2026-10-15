@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-15T14:34:43.617Z",
+  "generatedAt": "2026-10-15T15:00:16.450Z",
   "entries": [
     {
       "id": "teydra.codex",
-      "version": "3.0.0",
+      "version": "3.0.1",
       "manifest": {
         "schemaVersion": 3,
         "id": "teydra.codex",
-        "version": "3.0.0",
+        "version": "3.0.1",
         "publisherName": "Teydra Lab",
         "presentation": {
           "name": "Codex",
@@ -21,17 +21,17 @@
           }
         ]
       },
-      "packageFile": "teydra.codex-3.0.0.json",
-      "sha256": "6c9e58ce76bc9ab49331b94b99ecbde8be327c44ae6ee95b94143c057279557e",
+      "packageFile": "teydra.codex-3.0.1.json",
+      "sha256": "fcb74b89d7dd55daad6998a0380df60b3439cc9e3ebc48ee110e3354c95b886e",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
       "id": "teydra.claude-code",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "manifest": {
         "schemaVersion": 3,
         "id": "teydra.claude-code",
-        "version": "2.0.0",
+        "version": "2.0.1",
         "publisherName": "Teydra Lab",
         "presentation": {
           "name": "Claude Code",
@@ -44,17 +44,17 @@
           }
         ]
       },
-      "packageFile": "teydra.claude-code-2.0.0.json",
-      "sha256": "ce2cce57a55a7e1f3b0669eb2e443b163229894ed8b46fd6e4b99d9ed2f4a0d0",
+      "packageFile": "teydra.claude-code-2.0.1.json",
+      "sha256": "7be1efc19f5c5d2e656f28658dfdf1f2b9baf911e0c88739cef25c22e3d90ba9",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
       "id": "community.opencode",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "manifest": {
         "schemaVersion": 3,
         "id": "community.opencode",
-        "version": "2.0.0",
+        "version": "2.0.1",
         "publisherName": "OpenCode Community",
         "presentation": {
           "name": "OpenCode",
@@ -67,17 +67,17 @@
           }
         ]
       },
-      "packageFile": "community.opencode-2.0.0.json",
-      "sha256": "7502f9bef50bb54e6731b4140f2ab6317ab9aa0dad449564aba2fedf1a55cdc7",
+      "packageFile": "community.opencode-2.0.1.json",
+      "sha256": "17dd4addb9fd54fad4e861483221eee460ba32369fe422cabff526ce6087475e",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAMVLWUOFuaMHZ6CiuHR1d7j7ISwCxVxVJRY02NoFHFf8=\n-----END PUBLIC KEY-----"
     },
     {
       "id": "community.project-status",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "manifest": {
         "schemaVersion": 3,
         "id": "community.project-status",
-        "version": "2.0.0",
+        "version": "2.0.1",
         "publisherName": "Example developer",
         "presentation": {
           "name": "Project status",
@@ -90,10 +90,10 @@
           }
         ]
       },
-      "packageFile": "community.project-status-2.0.0.json",
-      "sha256": "a76552064cbd0b3237a01245d3cd5b9df0e9c7163be04cff081b1db026a97974",
+      "packageFile": "community.project-status-2.0.1.json",
+      "sha256": "a1179710a2a127f9632a9b37f45915b8df6ffd67d9a458b6409e9878e3a17ed0",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA5zGkLBOyM7RqfjU0SYBNtRccq0GN2xqFFnwLTAe5sLo=\n-----END PUBLIC KEY-----"
     }
   ],
-  "signature": "0GILaQqOzDhthT3nPO3WRCd0JEHCDiHzCudR/6wSValv8XHzsc17VjFYocRCpwVyICp1VB3yryjsVs5OeqITAw=="
+  "signature": "l67YWGERUzRcyEBK3wM8XNzMb7SDQ503D2woE3hFTQMUl1QZK8eKZSxNQfMbkXhiQLJcaXYdrfvbTIPN8LpPAQ=="
 }

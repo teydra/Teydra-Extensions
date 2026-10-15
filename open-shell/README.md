@@ -2,6 +2,8 @@
 
 These schema-3 packages run in the TeleCoding open shell. Old schema-1/2 packages remain at the parent catalog for old clients. Update **both the PC host and Android app** for this new protocol.
 
+The previous update service is no longer available. Install this transition once using the links below. Subsequent releases read the public [GitHub update channels](https://raw.githubusercontent.com/teydra/telecoding-releases/main/channels.json), without an embedded account key or a separate version database. Project status exposes only a count, not project paths or transcripts.
+
 - [Android](https://github.com/teydra/telecoding-releases/releases/latest/download/TeleCoding.apk)
 - [PC host](https://github.com/teydra/telecoding-releases/releases/download/pc/TeleCoding-PC.zip) (Node 22 or newer)
 
