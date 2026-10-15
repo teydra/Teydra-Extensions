@@ -21,6 +21,16 @@ Download `native-clients.mjs` and configure an ordinary stdio MCP connection wit
 
 ## Publish your own views
 
+### Optional icons, navigation and details
+
+A content view can include `icon`, a signed `data:image/png;base64,...` image (maximum 8,192 characters, dimensions up to 128×128). The shell shows content views in a horizontal, single-tap switcher. Without an icon it uses the view title's initial. Icons do not fetch external URLs.
+
+An extension can additionally declare one view with `placement: "navigation"` and one with `placement: "detail"`. Omit `placement` for ordinary content. The navigation document occupies an 80-point strip above the content; it can render its own scrolling agent buttons, icons and arbitrary design. Details open through an explicit action, next to content on wide screens or below it on narrow screens. Both surfaces use the same HTML sandbox, MCP permissions and lifecycle as content. They are optional; `views: []` is valid too.
+
+For example, `views: [{"id":"workspace","title":"Work"},{"id":"switcher","title":"Choose","placement":"navigation"},{"id":"inspect","title":"Details","placement":"detail"}]` needs three matching signed HTML documents (or corresponding MCP `ui://` resources). These are presentation slots, not core agent, chat or project records. All views of an extension can use its authorized MCP service and resource notifications; the service owns the selected agent and data. There is no mandatory double-click behavior. A publisher can implement other gestures within its own view.
+
+These fields require the matching updated PC host and mobile shell. Existing views without them continue to work. Updating a package preserves its disabled state; an uninstalled package is never automatically reinstalled.
+
 The shell has no required chats, projects, provider, agent or official catalog. An independent publisher can supply any self-contained HTML view or `ui://` MCP HTML resource using [MCP Apps](https://apps.extensions.modelcontextprotocol.io/). HTML runs in an isolated iframe. Network, native files and devices are unavailable directly; allowed tool/resource requests go through the host's MCP connection.
 
 Download `build-extensions.mjs`, use Node 22+, and prepare a directory of JSON files:
