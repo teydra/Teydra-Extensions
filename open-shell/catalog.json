@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-15T14:34:43.617Z",
+  "entries": [
+    {
+      "id": "teydra.codex",
+      "version": "3.0.0",
+      "manifest": {
+        "schemaVersion": 3,
+        "id": "teydra.codex",
+        "version": "3.0.0",
+        "publisherName": "Teydra Lab",
+        "presentation": {
+          "name": "Codex",
+          "description": "Use Codex projects and chats through its independent MCP service."
+        },
+        "views": [
+          {
+            "id": "workspace",
+            "title": "Codex"
+          }
+        ]
+      },
+      "packageFile": "teydra.codex-3.0.0.json",
+      "sha256": "6c9e58ce76bc9ab49331b94b99ecbde8be327c44ae6ee95b94143c057279557e",
+      "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
+    },
+    {
+      "id": "teydra.claude-code",
+      "version": "2.0.0",
+      "manifest": {
+        "schemaVersion": 3,
+        "id": "teydra.claude-code",
+        "version": "2.0.0",
+        "publisherName": "Teydra Lab",
+        "presentation": {
+          "name": "Claude Code",
+          "description": "Use Claude Code projects and chats through its independent MCP service."
+        },
+        "views": [
+          {
+            "id": "workspace",
+            "title": "Claude Code"
+          }
+        ]
+      },
+      "packageFile": "teydra.claude-code-2.0.0.json",
+      "sha256": "ce2cce57a55a7e1f3b0669eb2e443b163229894ed8b46fd6e4b99d9ed2f4a0d0",
+      "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
+    },
+    {
+      "id": "community.opencode",
+      "version": "2.0.0",
+      "manifest": {
+        "schemaVersion": 3,
+        "id": "community.opencode",
+        "version": "2.0.0",
+        "publisherName": "OpenCode Community",
+        "presentation": {
+          "name": "OpenCode",
+          "description": "Use OpenCode projects and chats through its independent MCP service."
+        },
+        "views": [
+          {
+            "id": "workspace",
+            "title": "OpenCode"
+          }
+        ]
+      },
+      "packageFile": "community.opencode-2.0.0.json",
+      "sha256": "7502f9bef50bb54e6731b4140f2ab6317ab9aa0dad449564aba2fedf1a55cdc7",
+      "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAMVLWUOFuaMHZ6CiuHR1d7j7ISwCxVxVJRY02NoFHFf8=\n-----END PUBLIC KEY-----"
+    },
+    {
+      "id": "community.project-status",
+      "version": "2.0.0",
+      "manifest": {
+        "schemaVersion": 3,
+        "id": "community.project-status",
+        "version": "2.0.0",
+        "publisherName": "Example developer",
+        "presentation": {
+          "name": "Project status",
+          "description": "Read local native project registries."
+        },
+        "views": [
+          {
+            "id": "workspace",
+            "title": "Project status"
+          }
+        ]
+      },
+      "packageFile": "community.project-status-2.0.0.json",
+      "sha256": "a76552064cbd0b3237a01245d3cd5b9df0e9c7163be04cff081b1db026a97974",
+      "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA5zGkLBOyM7RqfjU0SYBNtRccq0GN2xqFFnwLTAe5sLo=\n-----END PUBLIC KEY-----"
+    }
+  ],
+  "signature": "0GILaQqOzDhthT3nPO3WRCd0JEHCDiHzCudR/6wSValv8XHzsc17VjFYocRCpwVyICp1VB3yryjsVs5OeqITAw=="
+}
