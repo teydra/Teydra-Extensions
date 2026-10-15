@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-15T15:00:16.450Z",
+  "generatedAt": "2026-10-15T21:34:58.080Z",
   "entries": [
     {
       "id": "teydra.codex",
-      "version": "3.0.1",
+      "version": "3.1.0",
       "manifest": {
         "schemaVersion": 3,
         "id": "teydra.codex",
-        "version": "3.0.1",
+        "version": "3.1.0",
         "publisherName": "Teydra Lab",
         "presentation": {
           "name": "Codex",
@@ -17,21 +17,22 @@
         "views": [
           {
             "id": "workspace",
-            "title": "Codex"
+            "title": "Codex",
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAQklEQVR4nGPQcIz5P5CYYdQBow4YdcCoA4hR9OnTJ7LxqAOGpwMGPBGOOmDUAaMOGHXAyHMALfGoA0YdMOqAAXcAAMDK51J8vqNHAAAAAElFTkSuQmCC"
           }
         ]
       },
-      "packageFile": "teydra.codex-3.0.1.json",
-      "sha256": "fcb74b89d7dd55daad6998a0380df60b3439cc9e3ebc48ee110e3354c95b886e",
+      "packageFile": "teydra.codex-3.1.0.json",
+      "sha256": "0e56609f50a01ee1712c22766e855ff1c4ff140ed957a9d907e26443bdfb05d8",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
       "id": "teydra.claude-code",
-      "version": "2.0.1",
+      "version": "2.1.0",
       "manifest": {
         "schemaVersion": 3,
         "id": "teydra.claude-code",
-        "version": "2.0.1",
+        "version": "2.1.0",
         "publisherName": "Teydra Lab",
         "presentation": {
           "name": "Claude Code",
@@ -40,21 +41,22 @@
         "views": [
           {
             "id": "workspace",
-            "title": "Claude Code"
+            "title": "Claude Code",
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAkElEQVR4nO3WwQ2AIAwFUAZyB+dw/w26gIaDCQes7f+hQNJDj+1/EETKdR73zCoJSEAC2AEiMg9Qw98KB7ThDAIC9MJRhBvQC2QQLoAWhCLMAEsAgjABPIO9iF8AsipPjwpgDpe1d+0dWOIMeAYP+wosAcPvAS0o7Cb8QoT+CzQEMmff90CLYPr3fxMmIAFsPbz1BOncGfQ5AAAAAElFTkSuQmCC"
           }
         ]
       },
-      "packageFile": "teydra.claude-code-2.0.1.json",
-      "sha256": "7be1efc19f5c5d2e656f28658dfdf1f2b9baf911e0c88739cef25c22e3d90ba9",
+      "packageFile": "teydra.claude-code-2.1.0.json",
+      "sha256": "fc483f60ce5b8ddb5077a5fce0247cbffaf4f378cb462e36560d74dc4a748331",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
       "id": "community.opencode",
-      "version": "2.0.1",
+      "version": "2.1.0",
       "manifest": {
         "schemaVersion": 3,
         "id": "community.opencode",
-        "version": "2.0.1",
+        "version": "2.1.0",
         "publisherName": "OpenCode Community",
         "presentation": {
           "name": "OpenCode",
@@ -63,21 +65,22 @@
         "views": [
           {
             "id": "workspace",
-            "title": "OpenCode"
+            "title": "OpenCode",
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAQElEQVR4nGNwsIz8P5CYYdQBow4YdcCoAwgp+PTpEwampvpRB4w6YNQBow4YdcCoA0YdMPjbA6MOGHXAqANojQFQe3LRpO6pzAAAAABJRU5ErkJggg=="
           }
         ]
       },
-      "packageFile": "community.opencode-2.0.1.json",
-      "sha256": "17dd4addb9fd54fad4e861483221eee460ba32369fe422cabff526ce6087475e",
+      "packageFile": "community.opencode-2.1.0.json",
+      "sha256": "af6431f3c1b371a7328493c447f333cd7e323f9a7f4e2735cba1ab8b3f2892b0",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAMVLWUOFuaMHZ6CiuHR1d7j7ISwCxVxVJRY02NoFHFf8=\n-----END PUBLIC KEY-----"
     },
     {
       "id": "community.project-status",
-      "version": "2.0.1",
+      "version": "2.1.0",
       "manifest": {
         "schemaVersion": 3,
         "id": "community.project-status",
-        "version": "2.0.1",
+        "version": "2.1.0",
         "publisherName": "Example developer",
         "presentation": {
           "name": "Project status",
@@ -86,14 +89,15 @@
         "views": [
           {
             "id": "workspace",
-            "title": "Project status"
+            "title": "Project status",
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAARklEQVR4nO3OsQ0AIAzEwGzEBrTsv8ovAHUaikgo4uXCtS/GmruzAADAFiApBcATcJsA8AFUJwAA+AKqAfgX8DoAAAC0Aw7zJ2X5cFSntwAAAABJRU5ErkJggg=="
           }
         ]
       },
-      "packageFile": "community.project-status-2.0.1.json",
-      "sha256": "a1179710a2a127f9632a9b37f45915b8df6ffd67d9a458b6409e9878e3a17ed0",
+      "packageFile": "community.project-status-2.1.0.json",
+      "sha256": "655f61edcf92b92e15d0f8fb25456a91e3521d50c5942d08a31c3e0ed7e74627",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA5zGkLBOyM7RqfjU0SYBNtRccq0GN2xqFFnwLTAe5sLo=\n-----END PUBLIC KEY-----"
     }
   ],
-  "signature": "l67YWGERUzRcyEBK3wM8XNzMb7SDQ503D2woE3hFTQMUl1QZK8eKZSxNQfMbkXhiQLJcaXYdrfvbTIPN8LpPAQ=="
+  "signature": "wIIdrnIFl+u4UeFf3gidqVnnGrKcw8ND4b5Bhqs6BkNFOIHoJPPYuE+BHKF2Q3lSWFUFpVvi1vzBeIpVOEEMAw=="
 }
