@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-16T12:52:15.324Z",
+  "generatedAt": "2026-10-16T13:57:57.483Z",
   "entries": [
     {
       "id": "teydra.codex",
@@ -26,7 +26,7 @@
         ]
       },
       "packageFile": "teydra.codex-3.2.0.json",
-      "sha256": "2801bef47925660433b26884dbb7289461fd959c7f26e6db82436e3b9b80df48",
+      "sha256": "cf613054b713d0ad9ad7e8785fbc3a341f3037b20e1b820d8187b838b1bfbbcb",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
@@ -53,7 +53,7 @@
         ]
       },
       "packageFile": "teydra.claude-code-2.2.0.json",
-      "sha256": "8947fb671cac72764b5f0f87e28a0e6a86609c2e6cb2af3bfbbbc02e5b49e34d",
+      "sha256": "def585f7518595c67370106587be5ec9833fefba0337480588d4fb3f9bb6eea4",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
@@ -80,7 +80,7 @@
         ]
       },
       "packageFile": "community.opencode-2.2.0.json",
-      "sha256": "8ec473d503061fc46f8f9d55b2b109ca0fd9682989cd1bc7f4ff82b8e82d4a3d",
+      "sha256": "8ec33bac1e31e7b9af7d978c548aac2aa4b66626d534df04230038afd52bf5e1",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAMVLWUOFuaMHZ6CiuHR1d7j7ISwCxVxVJRY02NoFHFf8=\n-----END PUBLIC KEY-----"
     },
     {
@@ -107,9 +107,9 @@
         ]
       },
       "packageFile": "community.project-status-2.2.0.json",
-      "sha256": "9c917b23330859e3c0364fbe0dc121ec3b7050cd027427d286faefbf40bd259d",
+      "sha256": "b48b44ff7c03549951c8fafda3a45eb46df2f78d250fd81ac12de8d8a31cc709",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA5zGkLBOyM7RqfjU0SYBNtRccq0GN2xqFFnwLTAe5sLo=\n-----END PUBLIC KEY-----"
     }
   ],
-  "signature": "wdQPNVz2/7Jb6NB8SghcIVaxxm6NziZAM4fZ6cLsWLVA5my8m8XtUc5h2XvwnqtbzpVHbqDWXaH0VuwQEXYvDQ=="
+  "signature": "jC4xTFXKHdO6m4FWALZi3aWMw81bR+pbTmfqqivA2OCPq+0v/TktrfFclgk2kydV5Vdx8fDCwBr+kOFssZsxAQ=="
 }
