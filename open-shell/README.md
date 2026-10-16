@@ -69,3 +69,27 @@ Example host configuration (use your own public key and server):
 The actual signed source is `https://raw.githubusercontent.com/teydra/Teydra-Extensions/signed-release/open-shell/catalog.json`. Its key is included in the PC's `extension-source.json`. Signatures prove publisher identity and unchanged bytes, not that a publisher is harmless. `NOTICE.txt` contains the product license and the actual bundled dependency license texts. Open interfaces do not change the product's PolyForm Noncommercial license.
 
 Validation distinguishes encrypted protocol/browser tests, Windows host execution, Android compilation and physical-device operation. A physical Android test, other operating systems and a complete voice/Workforce runtime are not implied by this release.
+
+
+## Multi-PC selection in the existing chat layout
+
+Update the Android app and PC host together. The existing dark header and three bottom destinations remain. Choose one or several PCs in the chat sidebar; All and None are available. Extensions with the same ID and verified publisher appear together. An entry and all its tool calls stay bound to the PC that produced it. An unavailable PC does not disconnect other PCs.
+
+The first row selects an extension; the second row selects producer-defined items. Items can represent anything. Tapping an already selected item expands or collapses optional children in thinner rows. No agent, group, chat or project database is required in the shell. The optional native clients use a provider item and their existing native threads as children. Their New chat action belongs to those extensions; other producers can omit it or define different actions.
+
+To use the native rails, declare `"navigation": {"resourceUri":"extension://navigation"}` in the signed schema-3 manifest. The owner must also grant that resource through the normal MCP connection. Serve `application/json` through standard `resources/read`; optional resource subscriptions update the rails live:
+
+```json
+{
+  "items": [{"id":"group-1","title":"My group","viewId":"main","context":{"opaqueId":"123"},"children":[{"id":"child-1","title":"A detail","viewId":"main"}]}],
+  "actions": [{"id":"create","title":"Create entry","glyph":"add"}]
+}
+```
+
+Both arrays may be empty. IDs are unique within the tree, targets must be declared content views, and optional icons use the same bounded PNG format as view icons. Limits: 96,000 JSON characters, 512 items, depth 8, 12 actions and 4,000 characters per context object. Without this resource the shell falls back to the declared content views, with no header action. Custom navigation/detail HTML remains available through the existing optional placements.
+
+Through the standard MCP Apps handshake, `app.getHostContext().teydra` contains `selection: {id, context?}`, `source: {id, name}`, `refreshToken` and optional opaque `state`. Handle `app.onhostcontextchanged` to update content without replacing the document. A foreground refresh or pull-to-refresh updates metadata and the token; it never repeats a writing tool call. Handle the experimental `ui/notifications/teydra/action` notification with `{id}` to execute a declared header action inside your view. Send `ui/notifications/teydra/selection` with `{id}` to select a newly created item after updating the navigation resource.
+
+The optional `teydra/ui-state` request takes `{value: object|null}` and returns `{}` after saving. This is bounded widget state, for example unsent input, scoped by PC, verified publisher, extension and view. It is not a transcript mirror. Limits are 96,000 characters per view and 4 MiB overall; overflow returns an error and preserves existing input. Use the MCP Apps protocol request method with a real result schema and handle errors. Producers that do not need local state can ignore it entirely.
+
+Codex 3.2.0 and the other 2.2.0 packages add this navigation resource and input preservation without expanding the existing tool/resource grants. Original catalogs and package versions remain available for older clients. New optional navigation fields require this matching host generation; older schema-3 validators may reject the new catalog until the host is updated.
