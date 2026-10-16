@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-16T17:55:08.398Z",
+  "generatedAt": "2026-10-16T18:02:10.740Z",
   "entries": [
     {
       "id": "teydra.codex",
@@ -27,7 +27,7 @@
         ]
       },
       "packageFile": "teydra.codex-3.2.1.json",
-      "sha256": "4d763ccbe0ee4cdd81c90770c20edb7b4e464842a282b49084820a6587cbde8b",
+      "sha256": "ac848caf56e7113d9ee4c14a5b095d7d67f241492debe26a8faa32f0e24db658",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
@@ -55,7 +55,7 @@
         ]
       },
       "packageFile": "teydra.claude-code-2.2.1.json",
-      "sha256": "d65bef2411769063147f685280a8aa873c667dfbeb6c64e9c0dcbccfe3aefdcf",
+      "sha256": "c40015f9a5860e8a106675851cf8333a0ca61b697ec1fa48f58530cc55abfdae",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
@@ -88,7 +88,7 @@
         ]
       },
       "packageFile": "community.opencode-2.2.1.json",
-      "sha256": "f250c12802f3473607a22029d94f08cc17df84fcfc708decd482fd4638b47579",
+      "sha256": "10d4c6f5a9b6e0f524bdb99bb80acafdaa74fc90677fe855ccd9a87257015185",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAMVLWUOFuaMHZ6CiuHR1d7j7ISwCxVxVJRY02NoFHFf8=\n-----END PUBLIC KEY-----"
     },
     {
@@ -116,9 +116,9 @@
         ]
       },
       "packageFile": "community.project-status-2.2.1.json",
-      "sha256": "e8a1acf950bc2b4dd9d6c86232c942f3e5fbab22fe890172d45170cc79fd641e",
+      "sha256": "6e869b6f0c39fe6711d0c86398aa989d7f7c5f0bbf6318ed91d18d0355b734a0",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA5zGkLBOyM7RqfjU0SYBNtRccq0GN2xqFFnwLTAe5sLo=\n-----END PUBLIC KEY-----"
     }
   ],
-  "signature": "9c6cEvcinx3tl7UD6icWzO+EQw/egow8Cu4+h485rmg1FZLcPATTIhyNLmvuAoF6kAJgHqvUN997I/OE2Jf3Bw=="
+  "signature": "lzkm+F8cEsTxIt/l8LHLVO/0pv8rRQF1nqLWnr3qnkdtX9sikOhKYirOo0h8DWjZ6SWNyrgEdBxAUuFRyJdkCA=="
 }
