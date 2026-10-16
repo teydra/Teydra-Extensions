@@ -1,18 +1,19 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-16T13:57:57.483Z",
+  "generatedAt": "2026-10-16T18:02:10.740Z",
   "entries": [
     {
       "id": "teydra.codex",
-      "version": "3.2.0",
+      "version": "3.2.1",
       "manifest": {
         "schemaVersion": 3,
         "id": "teydra.codex",
-        "version": "3.2.0",
+        "version": "3.2.1",
         "publisherName": "Teydra Lab",
         "presentation": {
           "name": "Codex",
-          "description": "Use Codex projects and chats through its independent MCP service."
+          "accentColor": "#10a37f",
+          "description": "Codex conversations and projects."
         },
         "navigation": {
           "resourceUri": "extension://state"
@@ -21,25 +22,26 @@
           {
             "id": "workspace",
             "title": "Codex",
-            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAQklEQVR4nGPQcIz5P5CYYdQBow4YdcCoA4hR9OnTJ7LxqAOGpwMGPBGOOmDUAaMOGHXAyHMALfGoA0YdMOqAAXcAAMDK51J8vqNHAAAAAElFTkSuQmCC"
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEKElEQVR4nO2bSagcRRjHf9Pp5zOuJYq4oWIOelPccImKqIgnRUFzsAIiGHIIOSjoRYvCgxdBUBHUi1BCXHAD8aCCGyhiBDcEFT0pKIgWKlFjMiPfoyZUyp6e7pl5TvdM/6B4Nd1V39T3f7VXDXR0dHR0dCwtvaoJlTNHAxcBhwMbQshC6CWBkr9FZegV2Cmym9oYhNAH9gF/AN8DX3ptf5qJAMqZVcAAO4HDaAciyvvAnV7bDycWQDlzBPAacBntZC9wq9f2+VEJsjEGXIudFw4BnlbOnF9bAOXMVcAN0aMfRU3gBOAY4KjQH2wEDgVWwxeuAHkIaV/xn+C1Hbb3ojDMP7S3EsJq+M6NoVkeKUUGjgPOFqcTER6s3QSUM88At4SP/wDnem2/oCUoZ3YBW6JHZ3ltv6rTBM6J4m+3yfnAoyX+HCAvMRD3+F/HL5QzUtW2A595bV+hmRxU5lEjWF5iQNpZ3JvGvARslohy5glgh9c2TTNv0vJIX0CdJpBHcZlkxJwZxe8A3lHOnESz2J98ls5zYgH6ybsdiSgyQ9ytnLmE5gqQ1xVgwygBvLbPAtcBv0aPTwTeUs5IjWgC/RJ/KgmQJVPLg/DavglcAHyetLPHlTOPKWfK+pf/g0EVX7MSA1mJmmt4bb8N1T+dasoI8bpyRiZMCyHAYFQir+0er+3NwH1JuiuBD5QzpzMfBlUmfVmJgV4VAYZ4be8HbgxL0ni0kBFCpq2tFqAqsnJ8I3l2KnAy86fQ17xihrE1QDlzCvACcGHy6qnQVyxuDVDOyJJ5d+K8FOBer+1tNINCf/JprSpntgGPJDMt6Qe2em1lyjwvBusqgHJmJTguAsR8B1zfltVjPkkm5czxob2vLYgipAPc4rX9JUp7LXDxmEXLw17bePRYD2ZaA14Ns8AY2XW5x2t7YA6unJEdpRcr9Cc3AecxB/IJ88XDmvznbvfaPleQ7oyKnekm5UzPazt2tJk12YT57g5V92Pp+Uc4LzwpmyZjbInTO2ftfFV7+YTGZad1V1zdR6T7PWxSNpZs0ozjnJ830qTWVYBFIWPJyVgeBssuAMsmQG/aGjBgsagtQH/KzZF509WAhP40TaDHEtaAfomxpRMgo/0C9Je9BvTrCrC/Yrqmkpa5cPGWlRjY13IB0sPQ9Ih/jaoCzPugcxYCyD2nWgL8Pe52RcNJy7y3rgB/RvFNtI+0zHvqCvBJFL9aOdPora0C7ko+f1r3nuA1csYfPfpZ7t7K7dF57N5WRTkjFzkfSu4Ivuu1vWKSu8IvyykP7Uba/mav7UdFL7MxmeVq7Hu0l+Fl6ULnxwoQjqukKTwA/Ea7kGvyl5fdFK97BC63PC4FTgOODXOD+IcNsb2iHzdMyyD5kUQc74fwF/CDdHhe229m/P0dHR0dHR0sGP8Cdq8VHJJMuyQAAAAASUVORK5CYII="
           }
         ]
       },
-      "packageFile": "teydra.codex-3.2.0.json",
-      "sha256": "cf613054b713d0ad9ad7e8785fbc3a341f3037b20e1b820d8187b838b1bfbbcb",
+      "packageFile": "teydra.codex-3.2.1.json",
+      "sha256": "ac848caf56e7113d9ee4c14a5b095d7d67f241492debe26a8faa32f0e24db658",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
       "id": "teydra.claude-code",
-      "version": "2.2.0",
+      "version": "2.2.1",
       "manifest": {
         "schemaVersion": 3,
         "id": "teydra.claude-code",
-        "version": "2.2.0",
+        "version": "2.2.1",
         "publisherName": "Teydra Lab",
         "presentation": {
           "name": "Claude Code",
-          "description": "Use Claude Code projects and chats through its independent MCP service."
+          "accentColor": "#d4a27f",
+          "description": "Claude Code conversations and projects."
         },
         "navigation": {
           "resourceUri": "extension://state"
@@ -48,25 +50,26 @@
           {
             "id": "workspace",
             "title": "Claude Code",
-            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAkElEQVR4nO3WwQ2AIAwFUAZyB+dw/w26gIaDCQes7f+hQNJDj+1/EETKdR73zCoJSEAC2AEiMg9Qw98KB7ThDAIC9MJRhBvQC2QQLoAWhCLMAEsAgjABPIO9iF8AsipPjwpgDpe1d+0dWOIMeAYP+wosAcPvAS0o7Cb8QoT+CzQEMmff90CLYPr3fxMmIAFsPbz1BOncGfQ5AAAAAElFTkSuQmCC"
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAHlElEQVR4nO2ae6wfRRXHP/fX8hQ1KhQpKiqiEAbEYMPDBwg2Ig8rUowgTLktIFReNhFECeOIBAn6BwgFKhSYSrUgCmiVhxAC4ZFAJMCkQKIUQZGX2kIFBG3NsWeTYbK79+7v7t5LL/eb/JLfzszO4+yZc77nzMAEJjCBNzMGmr4Qg/s2IL97gM8b619jHUavSeMY3AeAM4C3AHsDg6zj6DVsf0z2zlzeLFsgBrce8BdgSlY1zVh/X/tTG3I+7wK+JH+N9XePhgbMKFm8YA5jg6uABcAdMTgzGgKYW1F+aAxuE0YRMbgdgL30cRJwWidbIAa3AfBF3ft7JlWrgHTRjwLzgWCsX0HHiMFdkH2Q/wAfNNY/2YoAYnDb6qIPB95Z0kSs/4XAhln5K8CVwI+M9Q/TAWJwGwNPAW/Pqs401p824i0QgzsLWAacWLH464ErgO+X1G2oNiHG4ObH4EQ928ZXShYvmNPPeL2Ssq9XaIYQnlnG+hnG+jXG+jOB3YDlFf0eC3ya9nFURfm7geltCOB3FW3FDV4UgztVHmJwOwE/BYQclWEl8CfaN367JkW3Av9Nnmc17XOgZJDJwGG6BWSRZZgG/BzYuqTuMeAyYKGxXvZqK4jBvVcN7f5JsQjjdGBffX5Z7db1w6XoA0MMOk339KHAW5MqsbYyoQKvAtcAPwFuky3SaHXV468PfEGN7ufU5RV40Fj/0Rjcl4El2avPAYuAS431Ys9GxgRjcLJ4YXsfLqkWSX/EWF9mC/pCDG474Gj9msL4yjDXWH+hMtRHxA1WtBOWeKlorLH+XyOhwicA55ZUXWOsn1nznljss5W2CkeYZ6z/TU1bcaP71UzlD8APjPVXJ+/J4r8FHJLxkxQvAMcZ60Uz+mKCi9TP5xC1r4NI/2vAZsA2IrAY3JYVbW3N4m+RPW+s3zldvMBY/5ixXjRmKnAS8O+S998G/Dgv7A0x+XSQfwK/yIr/DNxc9U4M7n3AgVnx+uoiyyCMcnVFnTDR02NwM9VQ52OJN5oHfAPYoKb/EYXD52XPC4z1VRMWHFkxxuyyRRjrbwI+poJO3RtqAMXay9d/VNX+/4jBCSn7I/BdYKuS8eRDnQx8dkQCMNbfCyzWx78BF1e1VVY2u6J6C+CAijHEuh+sRu0MDcFzSN0pyZc/tWQtIsCl6kUkTjjHWP9iGymxSYAQkuXG+pU17WQvp8buCqWxhXr+1lhfZ+yKfnqafTpCt9NGSUAmgvymcoECy3SsRcZ6+Ui1GKAjxOB+mez/NepCv6eWuvhCWxnr/9qgz4M1D1DgBNWEwqguM9Zv32SePTpADG6zjLHdbKyXPbowKZukX7UJrgP+njz/MFm84PKmc+3RDcSdCUEpIJmbgrs/kZQPxuCGrYXG+leVJ6QehUSjJDZ5QwhgMPn/rIbQqMeQ/VlAYok9GvadalGKG4az5zsXQAxuFyDdhyELTERN12Suctgw1j+gbDDHRc1nSycaMFj3xYS16VYocFAM7h0Nx7gke35cvApjLYAY3Ebq6grcVZEauzjLIkn43QRiB15KnucPQchGTQMGs3SVxAFluBZ4Jnk+NgYnp03DgrH+BSU/Elzd0a/6t8IDYnCSN/yq7uUdkyphXVON9asq3hP6+p2kaKV+2UuM9fczShjo5yV1XXvpog+sCD7ON9YfX9OH+O/lmbsscL9qz2INwt4YAojBvUfJy+yaXOBqDViOKuPeWX+HaIC1aUUTCWt/pYb0ln73+YgEENdGbftrNnafGruxQn38+cr6hoUYnBjBgzQDVJdFfkJd6GXGerH63Qogrj2AkECjSDRQk3ISprfEWC9Jyb4Rg9tGtcvWjLlGkyNnGetTd9oXBiomIuW3A5+seO9ZpZ1DJh37gUac+6gwDqiwE7IdPmWsv2skY02uKN+hZPGvKdmQlPdSY72cx3UCY30Ryy+NwU3RfL+cBb4/adbTaHBEAug1bC/q10rKuwFWdznu5Iryh4A7gU8kZevpSbH8nonBFVug9UNQTYJM1zOJGVnUlwomT9G1bgTnqRFMD0Fy3KmZ4ataMIJbK5sUlReXWwbRhFvVCIox7NwN9uQ2mApCUliTatyguKkLGrpBIVEzlVTtUTOnJxM3uHysiNBUJUJzak5iCiJ0ZBUNTvrbTxdVR4SuVSL0+zEhQjVu8jNKjvqlwptrGJtfsiio8EKlwv+gQwy0FAwdplrRJBiSTK7PgqHFGgyVJTw6wUCbncXgxFfL/Z0Cc4z1CyuIzuOJoZPDzY+XHV52jV7L/QlJWjGMK3T7ZlZ+wVgsvnUBqBssTo4Eu+tRd440DyiZ3ted2I4meh30mWeBXnc8FoPbIrnRIfi1sf55xosAzFoDlmZ0rF5iKDArY6CybcYMvY76TbVgih5QlmnE08CNjEMBXKkXlgocreovCQ+J+Qss6jKqHDMBmLXXZdPLFNNjcB8queNXdcqzzmtAfnghfEOusc7MzgzE/49PARjrb8+upMzKaG/VmcG40YC6C1SrsnP+cSuAyytubC0ZKlIcFwIw1stlhp+V5BYr7xaNNw1A7+1drW5RUm176mWrCUxgAhNgrPE/G1JXYqPrQoUAAAAASUVORK5CYII="
           }
         ]
       },
-      "packageFile": "teydra.claude-code-2.2.0.json",
-      "sha256": "def585f7518595c67370106587be5ec9833fefba0337480588d4fb3f9bb6eea4",
+      "packageFile": "teydra.claude-code-2.2.1.json",
+      "sha256": "c40015f9a5860e8a106675851cf8333a0ca61b697ec1fa48f58530cc55abfdae",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
       "id": "community.opencode",
-      "version": "2.2.0",
+      "version": "2.2.1",
       "manifest": {
         "schemaVersion": 3,
         "id": "community.opencode",
-        "version": "2.2.0",
+        "version": "2.2.1",
         "publisherName": "OpenCode Community",
         "presentation": {
           "name": "OpenCode",
-          "description": "Use OpenCode projects and chats through its independent MCP service."
+          "accentColor": "#8b7cf8",
+          "description": "OpenCode conversations and projects."
         },
         "navigation": {
           "resourceUri": "extension://state"
@@ -75,25 +78,31 @@
           {
             "id": "workspace",
             "title": "OpenCode",
-            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAQElEQVR4nGNwsIz8P5CYYdQBow4YdcCoAwgp+PTpEwampvpRB4w6YNQBow4YdcCoA0YdMPjbA6MOGHXAqANojQFQe3LRpO6pzAAAAABJRU5ErkJggg=="
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEKUlEQVR4nO2bW+htQxzHP3ud9fef43aI5BZyHngjt1wOEpInojgPUlJ0Hk7ngYmHwYMpD6MUUnhR1HHJreQB5VYkR7mlEE8UJQod4zhnb/3+zT7NGWuvvdbe+2+vtff61PSfvdbMb8/v+5/7zIaOjo6Ojo6lpVc1oTN+E3A+cAiwIYQshF4SKPlbVIZegZ0iu6mNQQh9YC/wJ/AD8JW26ueZCOCMXwXuA3YAB9MORJQPgDu0VR9NLIAz/lDgdeBi2ske4CZt1QujEmRjDDzdYueFg4BnnPHn1BbAGX85cG306CdREzgWOBI4PPQHGwEFrIYvXAHyENK+4j9BWzVs70VhmH9obyWE1fCdG0OzPAw4AjgaOEOcTkR4sHYTcMY/C9wYPv4DnKWt+pKW4IzfCWyNHp2urfq6ThM4M4q/0ybnA4+W+LOfvMRA3ON/E79wxktV2wZ8rq16lWZyQJlHjWB5iQFpZ3FvGvMysEUizvgngO3aqjTNvEnLI30BdZpAHsVlkhFzWhS/DXjXGX88zWJf8lk6z4kF6CfvtieiyAxxlzP+QporQF5XgA2jBNBWPQdcDfwWPT4OeNsZLzWiCfRL/KkkQJZMLQ9AW/UWcC7wRdLOHnfGP+aML+tf/g8GVXzNSgxkJWquoa36LlT/dKopI8QbzniZMC2EAINRibRVu7VVNwD3JukuAz50xp/CfBhUmfRlJQZ6VQQYoq26H7guLEnj0UJGCJm2tlqAqsjK8c3k2UnACcyfQl/zihnG1gBn/InAi8B5yaunQl+xuDXAGS9L5l2J81KAe7RVt9AMCv3Jp7XqjL8deCSZaUk/cLO2SqbM82KwrgI441eC4yJAzPfANW1ZPeaTZHLGHxPa+9qCKEI6wK3aql+jtFcBF4xZtDysrYpHj/VgpjXgtTALjJFdl7u1Vfvn4M542VF6qUJ/cj1wNnMgnzBfPKzJf+5WbdXzBelOrdiZbnbG97RVY0ebWZNNmO+uUHU/kZ5/hPPCk7JpMsaWOL1j1s5XtZdPaFx2WnfG1X1Euj/CJmVjySbNOM75eSNNal0FWBQylpyM5WGw7AKwbAL0pq0BAxaL2gL0p9wcmTddDUjoT9MEeixhDeiXGFs6ATLaL0B/2WtAv64A+yqmayppmQsXb1mJgb0tFyA9DE2P+NeoKsC8DzpnIYDcc6olwN/jblc0nLTMe+oK8FcU30z7SMu8u64An0bxK5zxjd7aKuDO5PNnde8JXiln/NGjX+TurdwencfubVWc8XKR86HkjuB72qpLJ7kr/Iqc8tBupO1v0VZ9XPQyG5NZrsa+T3sZXpYudH6sAOG4SprCA8DvtAu5Jn9J2U3xukfgcsvjIuBk4KgwN4h/2BDbK/pxw7QMkh9JxPF+CB74UTo8bdW3M/7+jo6Ojo4OFox/AfL0EE7AsdnRAAAAAElFTkSuQmCC"
+          },
+          {
+            "id": "settings",
+            "title": "OpenCode",
+            "placement": "settings"
           }
         ]
       },
-      "packageFile": "community.opencode-2.2.0.json",
-      "sha256": "8ec33bac1e31e7b9af7d978c548aac2aa4b66626d534df04230038afd52bf5e1",
+      "packageFile": "community.opencode-2.2.1.json",
+      "sha256": "10d4c6f5a9b6e0f524bdb99bb80acafdaa74fc90677fe855ccd9a87257015185",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAMVLWUOFuaMHZ6CiuHR1d7j7ISwCxVxVJRY02NoFHFf8=\n-----END PUBLIC KEY-----"
     },
     {
       "id": "community.project-status",
-      "version": "2.2.0",
+      "version": "2.2.1",
       "manifest": {
         "schemaVersion": 3,
         "id": "community.project-status",
-        "version": "2.2.0",
+        "version": "2.2.1",
         "publisherName": "Example developer",
         "presentation": {
           "name": "Project status",
-          "description": "Read local native project registries."
+          "accentColor": "#e0b85c",
+          "description": "Project counts from your PC."
         },
         "navigation": {
           "resourceUri": "extension://state"
@@ -102,14 +111,14 @@
           {
             "id": "workspace",
             "title": "Project status",
-            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAARklEQVR4nO3OsQ0AIAzEwGzEBrTsv8ovAHUaikgo4uXCtS/GmruzAADAFiApBcATcJsA8AFUJwAA+AKqAfgX8DoAAAC0Aw7zJ2X5cFSntwAAAABJRU5ErkJggg=="
+            "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADP0lEQVR4nO2bO4jUQBjHfzu7t+fjCh+FgoVRQQQLuStt7rxCgmBvkUpQUEQQtLAQtbYRwVJQiOADBBsNXCMigii+S4uo4AtFQdE7vd2VkQght7uT3M5sZrP5QyAz37f/mfznm9nJN7tQokSJEkOMiiniMPDqwEZgKdAE/gA/gY+O6/+iyAKEgbcJmAE2tDF/AaYd13+OBRCGeM90eHiJ1cA5LIEwxLtZYV9HwQVYFru/BewALsXqRim4APXY/XvH9e/IpSFWN0LBBaj1aB94Aao92gsvgMAS1HLaX2iJgDDwJoBJYHkkqtxsfQKuOa7/PU8BRI92JcLA2wNc7sB1NAy8ccf1Z8kpFEUfdqDHurSzBdidhkRgBpU+CLBKYV9TdAFGY/enHddPcqbaawjygQ4BRnQstILBjYCajmcT5IOKLXsNweBGQFVHG4J8UAqAeRGtjgBsEaCGGbR6yCWujfrVjJKorx3X/2xq8AT5YMHohIF3HngF3ANkAuUu8Ah4Fwbe/jQcGe3/YMUUCANvGjjYZcNzNgy8iomMtsAOrFfY5dnCykGKgFZGf/mAccgk6pFE3VhGzoESoB4vREnUpwmfJRiAwA5Us4qkC8KSCEjzdTxSZAFECp/qsE+BapEjoJJXX2tpHcPA2wrsjKWg56MU9NU2KWiVAK0+CKDvXSAMvL3AhQ7mQ2HgbXdcX+7bTUaAkd8yiJR+x7vYtrXZxhZOgBUK+1gf3hZzFWBUkYKmxzXAegHqGXnlu7z2fEGeAtQy8pqIABMcCEPhVzgBxLALgIVrgFUCtBRllb+JNqyOgOYiOFsaOBZAYAZDJ0BLUR46AZoK/4aGNhbD0TcBGgr/xXS+abMAzYydkz9ny4qGBg4tZ4NTYeCdStTNdylPRP5TaTsf+TuJ6t9dyu36ZEyAyeiKI54MkZiL3Y9HVyd7uyl0sk273xLlWUWfWjqnwHWF/UGiLA82uuFJojyjWDg/AG8Tdc8U0+UGGgU4DFwB3kSjJzv7FXgJHHBc/2HC/wRwEfgRG4lGNIo3ZRot7uy4/n3Ai06H5xJT5TGwy3H9pECS47b8D1L0mf/88kR5n+P6L1I+W4kSJUqUYFjxF2SZzTtscoQFAAAAAElFTkSuQmCC"
           }
         ]
       },
-      "packageFile": "community.project-status-2.2.0.json",
-      "sha256": "b48b44ff7c03549951c8fafda3a45eb46df2f78d250fd81ac12de8d8a31cc709",
+      "packageFile": "community.project-status-2.2.1.json",
+      "sha256": "6e869b6f0c39fe6711d0c86398aa989d7f7c5f0bbf6318ed91d18d0355b734a0",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA5zGkLBOyM7RqfjU0SYBNtRccq0GN2xqFFnwLTAe5sLo=\n-----END PUBLIC KEY-----"
     }
   ],
-  "signature": "jC4xTFXKHdO6m4FWALZi3aWMw81bR+pbTmfqqivA2OCPq+0v/TktrfFclgk2kydV5Vdx8fDCwBr+kOFssZsxAQ=="
+  "signature": "lzkm+F8cEsTxIt/l8LHLVO/0pv8rRQF1nqLWnr3qnkdtX9sikOhKYirOo0h8DWjZ6SWNyrgEdBxAUuFRyJdkCA=="
 }
