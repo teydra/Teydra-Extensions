@@ -1,18 +1,21 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-15T21:34:58.080Z",
+  "generatedAt": "2026-10-16T12:52:15.324Z",
   "entries": [
     {
       "id": "teydra.codex",
-      "version": "3.1.0",
+      "version": "3.2.0",
       "manifest": {
         "schemaVersion": 3,
         "id": "teydra.codex",
-        "version": "3.1.0",
+        "version": "3.2.0",
         "publisherName": "Teydra Lab",
         "presentation": {
           "name": "Codex",
           "description": "Use Codex projects and chats through its independent MCP service."
+        },
+        "navigation": {
+          "resourceUri": "extension://state"
         },
         "views": [
           {
@@ -22,21 +25,24 @@
           }
         ]
       },
-      "packageFile": "teydra.codex-3.1.0.json",
-      "sha256": "0e56609f50a01ee1712c22766e855ff1c4ff140ed957a9d907e26443bdfb05d8",
+      "packageFile": "teydra.codex-3.2.0.json",
+      "sha256": "2801bef47925660433b26884dbb7289461fd959c7f26e6db82436e3b9b80df48",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
       "id": "teydra.claude-code",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "manifest": {
         "schemaVersion": 3,
         "id": "teydra.claude-code",
-        "version": "2.1.0",
+        "version": "2.2.0",
         "publisherName": "Teydra Lab",
         "presentation": {
           "name": "Claude Code",
           "description": "Use Claude Code projects and chats through its independent MCP service."
+        },
+        "navigation": {
+          "resourceUri": "extension://state"
         },
         "views": [
           {
@@ -46,21 +52,24 @@
           }
         ]
       },
-      "packageFile": "teydra.claude-code-2.1.0.json",
-      "sha256": "fc483f60ce5b8ddb5077a5fce0247cbffaf4f378cb462e36560d74dc4a748331",
+      "packageFile": "teydra.claude-code-2.2.0.json",
+      "sha256": "8947fb671cac72764b5f0f87e28a0e6a86609c2e6cb2af3bfbbbc02e5b49e34d",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
       "id": "community.opencode",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "manifest": {
         "schemaVersion": 3,
         "id": "community.opencode",
-        "version": "2.1.0",
+        "version": "2.2.0",
         "publisherName": "OpenCode Community",
         "presentation": {
           "name": "OpenCode",
           "description": "Use OpenCode projects and chats through its independent MCP service."
+        },
+        "navigation": {
+          "resourceUri": "extension://state"
         },
         "views": [
           {
@@ -70,21 +79,24 @@
           }
         ]
       },
-      "packageFile": "community.opencode-2.1.0.json",
-      "sha256": "af6431f3c1b371a7328493c447f333cd7e323f9a7f4e2735cba1ab8b3f2892b0",
+      "packageFile": "community.opencode-2.2.0.json",
+      "sha256": "8ec473d503061fc46f8f9d55b2b109ca0fd9682989cd1bc7f4ff82b8e82d4a3d",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAMVLWUOFuaMHZ6CiuHR1d7j7ISwCxVxVJRY02NoFHFf8=\n-----END PUBLIC KEY-----"
     },
     {
       "id": "community.project-status",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "manifest": {
         "schemaVersion": 3,
         "id": "community.project-status",
-        "version": "2.1.0",
+        "version": "2.2.0",
         "publisherName": "Example developer",
         "presentation": {
           "name": "Project status",
           "description": "Read local native project registries."
+        },
+        "navigation": {
+          "resourceUri": "extension://state"
         },
         "views": [
           {
@@ -94,10 +106,10 @@
           }
         ]
       },
-      "packageFile": "community.project-status-2.1.0.json",
-      "sha256": "655f61edcf92b92e15d0f8fb25456a91e3521d50c5942d08a31c3e0ed7e74627",
+      "packageFile": "community.project-status-2.2.0.json",
+      "sha256": "9c917b23330859e3c0364fbe0dc121ec3b7050cd027427d286faefbf40bd259d",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA5zGkLBOyM7RqfjU0SYBNtRccq0GN2xqFFnwLTAe5sLo=\n-----END PUBLIC KEY-----"
     }
   ],
-  "signature": "wIIdrnIFl+u4UeFf3gidqVnnGrKcw8ND4b5Bhqs6BkNFOIHoJPPYuE+BHKF2Q3lSWFUFpVvi1vzBeIpVOEEMAw=="
+  "signature": "wdQPNVz2/7Jb6NB8SghcIVaxxm6NziZAM4fZ6cLsWLVA5my8m8XtUc5h2XvwnqtbzpVHbqDWXaH0VuwQEXYvDQ=="
 }
