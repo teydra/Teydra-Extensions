@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-16T17:50:13.163Z",
+  "generatedAt": "2026-10-16T17:55:08.398Z",
   "entries": [
     {
       "id": "teydra.codex",
@@ -27,7 +27,7 @@
         ]
       },
       "packageFile": "teydra.codex-3.2.1.json",
-      "sha256": "202aa829f233801997dfe6e4b090886b7b1257573d5130aef14119e54029dc33",
+      "sha256": "4d763ccbe0ee4cdd81c90770c20edb7b4e464842a282b49084820a6587cbde8b",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
@@ -55,7 +55,7 @@
         ]
       },
       "packageFile": "teydra.claude-code-2.2.1.json",
-      "sha256": "16b1857a106e96e345e90fa6ef08f96463b956a58c36b9519ef00a73f8b7c24a",
+      "sha256": "d65bef2411769063147f685280a8aa873c667dfbeb6c64e9c0dcbccfe3aefdcf",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8VJwZr9ST0tXw9SgBx8Co212PBwN156qivSW268gdgA=\n-----END PUBLIC KEY-----"
     },
     {
@@ -88,7 +88,7 @@
         ]
       },
       "packageFile": "community.opencode-2.2.1.json",
-      "sha256": "b18080dd6c9f042c6cf64852d38305b7c092b933c36f19c5f491bbb220d593bf",
+      "sha256": "f250c12802f3473607a22029d94f08cc17df84fcfc708decd482fd4638b47579",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAMVLWUOFuaMHZ6CiuHR1d7j7ISwCxVxVJRY02NoFHFf8=\n-----END PUBLIC KEY-----"
     },
     {
@@ -116,9 +116,9 @@
         ]
       },
       "packageFile": "community.project-status-2.2.1.json",
-      "sha256": "32350ac9e30a4a085abae1fcc80d2ddcee69a57db310f75d89c19fd5689f5c30",
+      "sha256": "e8a1acf950bc2b4dd9d6c86232c942f3e5fbab22fe890172d45170cc79fd641e",
       "publisherPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA5zGkLBOyM7RqfjU0SYBNtRccq0GN2xqFFnwLTAe5sLo=\n-----END PUBLIC KEY-----"
     }
   ],
-  "signature": "V8PXQZesDUHMs+Jo/8n33Xn0EP4uL642Zqzc7LenOf1aZzAtAzKjs2lkQpPihk4nXumWD4TyCQQbq7PfNZE/CA=="
+  "signature": "9c6cEvcinx3tl7UD6icWzO+EQw/egow8Cu4+h485rmg1FZLcPATTIhyNLmvuAoF6kAJgHqvUN997I/OE2Jf3Bw=="
 }
